@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --brand-primary: oklch(71.33% 0.112 194.94);
+  --brand-dark: #050b14;
+  --brand-light: #f5f8ff;
+  color-scheme: light dark;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: "Inter", "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background-color: var(--brand-dark);
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.text-brand {
+  color: var(--brand-primary);
+}
+
+.bg-brand {
+  background-color: var(--brand-primary);
+}
+
+.border-brand {
+  border-color: var(--brand-primary);
+}
+
+.text-brand-soft {
+  color: color-mix(in srgb, var(--brand-primary) 80%, white 20%);
+}
+
+.border-brand-strong {
+  border-color: color-mix(in srgb, var(--brand-primary) 90%, transparent);
+}
+
+.border-brand-soft {
+  border-color: color-mix(in srgb, var(--brand-primary) 65%, transparent);
+}
+
+.border-brand-light {
+  border-color: color-mix(in srgb, var(--brand-primary) 35%, transparent);
+}
+
+.hover\:border-brand:hover {
+  border-color: var(--brand-primary);
+}
+
+.hover\:bg-brand:hover {
+  background-color: var(--brand-primary);
+}
+
+.hover\:text-brand:hover {
+  color: var(--brand-primary);
+}
+
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: rgb(15 23 42 / 0.8);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(148 163 184 / 0.9);
+  border-radius: 9999px;
+}
+
+.section-title {
+  @apply text-3xl font-semibold md:text-4xl tracking-tight;
+}
+
+.section-paragraph {
+  @apply text-base md:text-lg text-slate-200 leading-relaxed;
+}
