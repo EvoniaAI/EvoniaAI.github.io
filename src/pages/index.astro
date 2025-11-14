@@ -1,0 +1,148 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SEOTags from "../components/seo/seo-tags.astro";
+import { services, differentiators, contactChannels } from "../constants";
+---
+
+<Layout title="EvoniaAI · 灵栈平云" description="EvoniaAI offers bilingual web development consulting, career path coaching, and enterprise software delivery services.">
+  <SEOTags
+    slot="seo"
+    title="EvoniaAI · 灵栈平云"
+    description="EvoniaAI provides web development consulting, career mentoring, and enterprise-grade software solutions."
+    urlPath="/"
+  />
+
+  <section id="about" class="mx-auto mt-16 flex w-full max-w-6xl flex-col items-center gap-10 py-10 md:flex-row md:items-start">
+    <div
+      class="relative w-full flex-1 overflow-hidden rounded-3xl p-[1px]"
+      style={{
+        background: "linear-gradient(135deg, color-mix(in srgb, var(--brand-primary) 40%, transparent), color-mix(in srgb, var(--brand-primary) 15%, #020617), #020617)"
+      }}
+    >
+      <div class="h-full w-full rounded-[inherit] bg-slate-950/90 p-10">
+        <p class="text-sm uppercase tracking-[0.4em] text-brand-soft">EvoniaAI · 灵栈平云</p>
+        <h1 class="mt-6 text-4xl font-bold leading-tight text-white md:text-5xl">
+          Bilingual consulting for teams shipping the future
+        </h1>
+        <p class="mt-4 text-lg text-slate-200">
+          EvoniaAI（灵栈平云）是一家双语科技咨询公司，专注于 Web 产品战略、职业成长路径和企业级软件交付。我们与全球伙伴并肩作战，用深入的工程洞察和精细的体验设计帮助团队驶向新的高度。
+        </p>
+        <p class="mt-6 text-base text-slate-300">
+          From discovery workshops to production-ready launches, we bridge design, engineering, and leadership so your organization can focus on lasting impact.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4 text-sm text-white/70">
+          <a
+            class="rounded-full bg-brand px-6 py-3 font-semibold text-slate-950 transition hover:scale-105"
+            href="#contact"
+          >
+            Start a project · 启动合作
+          </a>
+          <a
+            class="rounded-full border border-white/30 px-6 py-3 font-semibold transition hover:border-brand hover:text-brand"
+            href="https://i.annatarhe.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Meet the founder 创始人简介
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="w-full max-w-md rounded-3xl border border-white/10 bg-slate-950/80 p-8">
+      <h2 class="text-xl font-semibold text-white">Highlights 亮点</h2>
+      <ul class="mt-6 space-y-5 text-sm text-white/70">
+        <li class="flex items-start gap-3">
+          <span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand"></span>
+          <p>Full-stack web architectures, design systems, and AI-augmented workflows.</p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand"></span>
+          <p>职业路径规划、团队辅导与技术领导力训练营。</p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand"></span>
+          <p>Enterprise-grade delivery with transparent roadmaps and measurable outcomes.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="services" class="mx-auto mt-24 w-full max-w-6xl py-10">
+    <div class="text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Core Services 核心服务</p>
+      <h2 class="mt-4 section-title text-white">From strategy to shipping · 从战略到交付</h2>
+      <p class="section-paragraph mt-4 text-center">
+        Tailored engagements designed for product leaders, CTOs, and founders who expect craftsmanship and speed.
+      </p>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {services.map((service) => (
+        <article class="group rounded-3xl border border-white/10 bg-slate-950/70 p-8 transition hover:border-brand hover:bg-slate-900/80">
+          <h3 class="text-xl font-semibold text-white group-hover:text-brand">{service.titleEn}</h3>
+          <p class="mt-1 text-sm text-white/60">{service.titleZh}</p>
+          <p class="mt-4 text-sm text-white/70 leading-relaxed">{service.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="approach" class="mx-auto mt-24 w-full max-w-6xl py-10">
+    <div class="grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-center">
+      <div>
+        <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Why EvoniaAI 为何选择我们</p>
+        <h2 class="mt-4 section-title text-white">Partnership built on clarity 合作共创清晰价值</h2>
+        <p class="section-paragraph mt-5">
+          We co-create with your team, uncovering the context behind every decision. Each engagement blends research, product strategy, and accountable delivery so your roadmap can move faster without sacrificing quality.
+        </p>
+        <div class="mt-8 grid gap-6">
+          {differentiators.map((item) => (
+            <div class="rounded-2xl border border-white/10 bg-slate-950/80 p-6">
+              <h3 class="text-lg font-semibold text-white">{item.title}</h3>
+              <p class="mt-2 text-sm text-white/70 leading-relaxed">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <aside class="rounded-3xl border border-brand-soft bg-slate-950/70 p-8 shadow-[0_0_60px_-30px_var(--brand-primary)]">
+        <h3 class="text-lg font-semibold text-white">Founder's note 创始人寄语</h3>
+        <p class="mt-4 text-sm text-white/70 leading-relaxed">
+          “We founded EvoniaAI to help innovators move from imagination to enduring products. Whether you are exploring a new market, scaling a platform, or guiding a team to its next chapter, we will be there as your bilingual sparring partner.”
+        </p>
+        <a
+          class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
+          href="https://i.annatarhe.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Visit the founder's desk 访问创始人主页 →
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="contact" class="mx-auto mt-24 mb-16 w-full max-w-6xl rounded-3xl border border-brand-light bg-slate-950/80 p-10">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-xl">
+        <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Contact 联系方式</p>
+        <h2 class="mt-4 section-title text-white">Let's explore possibilities · 一起探索可能性</h2>
+        <p class="section-paragraph mt-4">
+          Share your ambition—whether it's a platform overhaul, a go-to-market push, or building career pathways for your team. We will design a blueprint tailored to your timeline and resources.
+        </p>
+      </div>
+      <ul class="grid gap-4 text-sm text-white/80 md:w-72">
+        {contactChannels.map((channel) => (
+          <li class="rounded-2xl border border-white/10 bg-slate-900/80 p-5">
+            <p class="text-xs uppercase tracking-[0.3em] text-white/40">{channel.label}</p>
+            {channel.href ? (
+              <a class="mt-2 block text-lg font-semibold text-brand hover:underline" href={channel.href} target={channel.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+                {channel.value}
+              </a>
+            ) : (
+              <p class="mt-2 text-lg font-semibold text-brand">{channel.value}</p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Layout>

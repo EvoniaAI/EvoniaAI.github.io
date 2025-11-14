@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  urlPath?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  urlPath = "/",
+  image = "/social-share.png"
+} = Astro.props;
+
+const absoluteUrl = new URL(urlPath, Astro.site ?? "https://evoniaai.github.io").toString();
+---
+
+<Fragment>
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={absoluteUrl} />
+  <meta property="og:image" content={image} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+</Fragment>

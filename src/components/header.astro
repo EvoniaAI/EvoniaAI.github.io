@@ -1,0 +1,59 @@
+---
+const navLinks = [
+  { href: "#about", label: "About 关于" },
+  { href: "#services", label: "Services 服务" },
+  { href: "#approach", label: "Approach 方法" },
+  { href: "#contact", label: "Contact 联系" }
+];
+---
+
+<header class="sticky top-0 z-20 w-full backdrop-blur border-b border-white/10 bg-slate-950/80">
+  <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4">
+    <a class="flex items-center gap-3 text-white" href="/">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-brand font-semibold opacity-90">
+        EA
+      </div>
+      <div class="flex flex-col leading-tight">
+        <span class="text-lg font-semibold tracking-tight">EvoniaAI</span>
+        <span class="text-xs text-white/60">灵栈平云</span>
+      </div>
+    </a>
+    <nav class="hidden items-center gap-8 text-sm font-medium text-white/70 md:flex">
+      {navLinks.map((link) => (
+        <a href={link.href} class="transition-colors duration-150 hover:text-white">
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://i.annatarhe.com/"
+        target="_blank"
+        rel="noreferrer"
+        class="rounded-full border border-brand-soft px-4 py-1.5 text-sm font-semibold text-brand-soft transition hover:border-brand hover:bg-brand hover:text-slate-950"
+      >
+        Founder 创始人
+      </a>
+    </nav>
+    <details class="group relative md:hidden">
+      <summary class="list-none rounded-full border border-white/20 px-4 py-2 text-sm text-white/80">
+        Menu 菜单
+      </summary>
+      <div class="absolute right-0 mt-3 w-48 rounded-2xl border border-white/15 bg-slate-900/95 p-3 shadow-xl">
+        <nav class="flex flex-col gap-3 text-sm text-white/80">
+          {navLinks.map((link) => (
+            <a href={link.href} class="rounded-lg px-3 py-2 transition hover:bg-white/10 hover:text-white">
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="https://i.annatarhe.com/"
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-lg border border-brand-soft px-3 py-2 text-center font-semibold text-brand-soft hover:border-brand hover:bg-brand hover:text-slate-950"
+          >
+            Founder 创始人
+          </a>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
