@@ -1,0 +1,183 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SEOTags from "../components/seo/seo-tags.astro";
+import { pricingPlans, contactChannels } from "../constants";
+---
+
+<Layout title="Pricing · 价格 - EvoniaAI" description="Transparent pricing for consulting services and project development. From hourly consultations to enterprise solutions.">
+  <SEOTags
+    slot="seo"
+    title="Pricing · 价格 - EvoniaAI"
+    description="Transparent pricing for consulting services and project development. From hourly consultations to enterprise solutions."
+    urlPath="/pricing"
+  >
+    <script
+      slot="jsonld"
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "PriceSpecification",
+        name: "EvoniaAI Pricing",
+        description: "Consulting and development services pricing",
+      })}
+    />
+  </SEOTags>
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-b from-slate-950 to-slate-900 py-20 px-4">
+    <div class="mx-auto max-w-6xl text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Transparent Pricing 透明定价</p>
+      <h1 class="mt-4 text-4xl font-bold text-white md:text-5xl">
+        Investment in Excellence
+      </h1>
+      <p class="mt-2 text-2xl text-brand">投资卓越成果</p>
+      <p class="mt-6 mx-auto max-w-2xl text-lg text-white/70">
+        Choose the engagement model that fits your needs. From strategic consultations to full project delivery, we offer flexible options for every stage of your journey.
+      </p>
+    </div>
+  </div>
+
+  <!-- Consulting Section -->
+  <section id="consulting" class="mx-auto mt-16 w-full max-w-6xl py-10 px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-white md:text-4xl">
+        {pricingPlans.consulting.titleEn}
+      </h2>
+      <p class="mt-2 text-xl text-brand">{pricingPlans.consulting.titleZh}</p>
+      <p class="mt-4 mx-auto max-w-3xl text-white/70">
+        {pricingPlans.consulting.descriptionEn}
+      </p>
+      <p class="mt-2 text-white/60">
+        {pricingPlans.consulting.descriptionZh}
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      {pricingPlans.consulting.options.map((option) => (
+        <div class="group relative rounded-3xl border border-white/10 bg-slate-950/70 p-8 transition hover:border-brand hover:bg-slate-900/80">
+          <div class="mb-8">
+            <h3 class="text-2xl font-semibold text-white group-hover:text-brand">
+              {option.nameEn}
+            </h3>
+            <p class="mt-1 text-white/60">{option.nameZh}</p>
+          </div>
+
+          <div class="mb-8 flex items-baseline gap-2">
+            <span class="text-5xl font-bold text-brand">{option.price}</span>
+            <span class="text-white/60">
+              {option.unit} · {option.unitZh}
+            </span>
+          </div>
+
+          <div class="space-y-4">
+            <h4 class="text-sm font-semibold uppercase tracking-wider text-white/80">
+              What's Included · 包含内容
+            </h4>
+            <ul class="space-y-3">
+              {option.features.map((feature, index) => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-1.5 h-2 w-2 rounded-full bg-brand flex-shrink-0"></span>
+                  <div>
+                    <p class="text-white/80">{feature}</p>
+                    <p class="text-sm text-white/50">{option.featuresZh[index]}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mt-8">
+            <a
+              href="#contact"
+              class="block w-full rounded-full bg-brand py-3 text-center font-semibold text-slate-950 transition hover:scale-105"
+            >
+              Get Started · 开始咨询
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Project Development Section -->
+  <section id="development" class="mx-auto mt-24 w-full max-w-6xl py-10 px-4">
+    <div class="rounded-3xl border border-brand-light bg-slate-950/80 p-10 md:p-16">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-white md:text-4xl">
+          {pricingPlans.development.titleEn}
+        </h2>
+        <p class="mt-2 text-xl text-brand">{pricingPlans.development.titleZh}</p>
+        <p class="mt-4 mx-auto max-w-3xl text-white/70">
+          {pricingPlans.development.descriptionEn}
+        </p>
+        <p class="mt-2 text-white/60">
+          {pricingPlans.development.descriptionZh}
+        </p>
+      </div>
+
+      <div class="mx-auto max-w-4xl">
+        <div class="rounded-2xl border border-white/10 bg-slate-900/50 p-8">
+          <h3 class="mb-6 text-center text-2xl font-semibold text-white">
+            Contract-Based Pricing · 合同制定价
+          </h3>
+          <p class="mb-8 text-center text-white/70">
+            Each project is unique. We provide custom quotes based on your specific requirements, timeline, and scope.
+          </p>
+          <p class="mb-8 text-center text-white/60">
+            每个项目都是独特的。我们根据您的具体需求、时间表和范围提供定制报价。
+          </p>
+
+          <div class="grid gap-6 md:grid-cols-2 mb-8">
+            {pricingPlans.development.features.map((feature) => (
+              <div class="rounded-xl border border-white/5 bg-slate-950/50 p-6">
+                <h4 class="mb-2 font-semibold text-white">{feature.titleEn}</h4>
+                <p class="text-sm text-brand-soft">{feature.titleZh}</p>
+                <p class="mt-3 text-sm text-white/70">{feature.descriptionEn}</p>
+                <p class="mt-2 text-sm text-white/50">{feature.descriptionZh}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="text-center">
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 font-semibold text-slate-950 transition hover:scale-105"
+            >
+              {pricingPlans.development.ctaEn} · {pricingPlans.development.ctaZh}
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA Section -->
+  <section id="contact" class="mx-auto mt-24 mb-16 w-full max-w-6xl rounded-3xl bg-gradient-to-r from-brand-light/10 to-brand/10 border border-brand-light p-10 mx-4">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-white md:text-4xl">
+        Ready to Start? · 准备开始？
+      </h2>
+      <p class="mt-4 mx-auto max-w-2xl text-lg text-white/70">
+        Let's discuss how we can help you achieve your goals. Reach out for a consultation or project quote.
+      </p>
+      <p class="mt-2 text-white/60">
+        让我们讨论如何帮助您实现目标。联系我们获取咨询或项目报价。
+      </p>
+
+      <div class="mt-10 flex flex-wrap justify-center gap-6">
+        {contactChannels.map((channel) => (
+          <a
+            href={channel.href}
+            target={channel.href.startsWith('http') ? '_blank' : undefined}
+            rel="noreferrer"
+            class="rounded-full border border-white/20 bg-slate-950/80 px-6 py-3 font-semibold text-brand transition hover:border-brand hover:bg-brand hover:text-slate-950"
+          >
+            {channel.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
