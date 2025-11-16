@@ -1,9 +1,18 @@
 ---
-const navLinks = [
+const currentPath = Astro.url.pathname;
+const isHomePage = currentPath === '/';
+
+const navLinks = isHomePage ? [
   { href: "#about", label: "About 关于" },
   { href: "#services", label: "Services 服务" },
   { href: "#approach", label: "Approach 方法" },
+  { href: "/pricing", label: "Pricing 价格" },
   { href: "#contact", label: "Contact 联系" }
+] : [
+  { href: "/#about", label: "About 关于" },
+  { href: "/#services", label: "Services 服务" },
+  { href: "/pricing", label: "Pricing 价格" },
+  { href: "/#contact", label: "Contact 联系" }
 ];
 ---
 
