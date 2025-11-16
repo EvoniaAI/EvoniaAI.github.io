@@ -37,12 +37,8 @@ export const differentiators = [
 export const contactChannels = [
   {
     label: "Email 邮箱",
-    value: "hello@evonia.ai",
-    href: "mailto:hello@evonia.ai",
-  },
-  {
-    label: "WeChat 微信",
-    value: "EvoniaAI Studio",
+    value: "annatar.he+evoniaai@gmail.com",
+    href: "mailto:annatar.he+evoniaai@gmail.com",
   },
   {
     label: "Founder 创始人",
