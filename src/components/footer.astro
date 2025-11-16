@@ -1,30 +1,29 @@
 ---
 const socials = [
-  { label: "Email 邮箱", href: "mailto:hello@evonia.ai" },
+  { label: "Email", href: "mailto:hello@evonia.ai" },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/evoniaai" },
-  { label: "Founder 创始人", href: "https://i.annatarhe.com/" }
+  { label: "Founder", href: "https://i.annatarhe.com/" }
 ];
 ---
 
-<footer class="mt-24 border-t border-white/10 bg-slate-950/70 py-10">
-  <div class="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 text-sm text-white/70 md:flex-row md:items-center md:justify-between">
-    <div>
-      <p class="font-semibold text-white">EvoniaAI · 灵栈平云</p>
-      <p class="mt-1 max-w-xl text-xs text-white/50">
-        We craft web platforms, career strategies, and enterprise software that help forward-looking teams grow with confidence.
-      </p>
-    </div>
-    <ul class="flex flex-wrap gap-4 text-xs uppercase tracking-[0.2em] text-white/60">
-      {socials.map((item) => (
-        <li>
-          <a class="transition hover:text-white" href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-  <p class="mt-6 text-center text-[0.65rem] uppercase tracking-[0.3em] text-white/30">
-    © {new Date().getFullYear()} EvoniaAI · 灵栈平云 — Web consulting with heart
+<footer class="bg-black p-4 w-full flex justify-center items-center flex-col">
+  <ul
+    class="max-w-screen-lg w-full text-xs text-teal-500 flex items-center justify-evenly"
+  >
+    {
+      socials.map((item) => {
+        const nameNode = <span class="p-4">{item.label}</span>;
+        return (
+          <li>
+            <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" class="hover:underline">
+              {nameNode}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+  <p class="mt-4 text-center text-[0.65rem] uppercase tracking-[0.3em] text-white/30">
+    © {new Date().getFullYear()} EvoniaAI · 灵栈平云
   </p>
 </footer>

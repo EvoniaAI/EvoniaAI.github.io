@@ -2,6 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import SEOTags from "../components/seo/seo-tags.astro";
 import { services, differentiators, contactChannels } from "../constants";
+// Placeholder images - will need to be replaced with actual assets
+// import BgImg from "../images/bg-hero.png";
+// import TitleImage from "../images/title.png";
 ---
 
 <Layout title="EvoniaAI · 灵栈平云" description="EvoniaAI offers bilingual web development consulting, career path coaching, and enterprise software delivery services.">
@@ -10,42 +13,80 @@ import { services, differentiators, contactChannels } from "../constants";
     title="EvoniaAI · 灵栈平云"
     description="EvoniaAI provides web development consulting, career mentoring, and enterprise-grade software solutions."
     urlPath="/"
-  />
+  >
+    <script
+      slot="jsonld"
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify({
+        "@context": Astro.site,
+        "@type": "Organization",
+        name: "EvoniaAI · 灵栈平云",
+        description: "EvoniaAI is a bilingual consulting studio specializing in web development, career guidance, and enterprise software.",
+        url: Astro.site,
+      })}
+    />
+  </SEOTags>
 
-  <section id="about" class="mx-auto mt-16 flex w-full max-w-6xl flex-col items-center gap-10 py-10 md:flex-row md:items-start">
+  <!-- Hero Section with AsyncTalk Pattern -->
+  <div
+    class="h-[75vh] min-h-[250px] m-auto max-w-screen-lg bg-black bg-[center_top_30%] bg-no-repeat sm:bg-[length:auto_50%] bg-[length:95%_auto]"
+    style={{
+      backgroundColor: "#020617",
+      backgroundImage: "linear-gradient(135deg, color-mix(in srgb, var(--at-primary-color) 40%, transparent), color-mix(in srgb, var(--at-primary-color) 15%, #020617), #020617)"
+    }}
+  >
+    <div class="h-full backdrop-blur-md">
+      <div
+        class="h-full select-none -translate-y-1/4 flex flex-col justify-center max-w-[60%] m-auto text-center"
+      >
+        <h1 class="text-5xl md:text-6xl font-bold text-white">
+          EvoniaAI
+        </h1>
+        <p class="text-2xl md:text-3xl text-brand mt-2">灵栈平云</p>
+        <h3 class="text-white mt-10 italic text-center w-full text-lg">
+          Bilingual consulting for teams shipping the future
+        </h3>
+        <p class="text-white/70 mt-4 text-base">
+          从战略到交付 · From strategy to shipping
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a
+            class="rounded-full bg-brand px-6 py-3 font-semibold text-slate-950 transition hover:scale-105"
+            href="#about"
+          >
+            Learn more · 了解更多
+          </a>
+          <a
+            class="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition hover:border-brand hover:text-brand"
+            href="#contact"
+          >
+            Start a project · 启动合作
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="mx-auto mt-16 flex w-full max-w-6xl flex-col items-center gap-10 py-10 px-4 md:flex-row md:items-start">
     <div
       class="relative w-full flex-1 overflow-hidden rounded-3xl p-[1px]"
       style={{
-        background: "linear-gradient(135deg, color-mix(in srgb, var(--brand-primary) 40%, transparent), color-mix(in srgb, var(--brand-primary) 15%, #020617), #020617)"
+        background: "linear-gradient(135deg, color-mix(in srgb, var(--at-primary-color) 40%, transparent), color-mix(in srgb, var(--at-primary-color) 15%, #020617), #020617)"
       }}
     >
       <div class="h-full w-full rounded-[inherit] bg-slate-950/90 p-10">
-        <p class="text-sm uppercase tracking-[0.4em] text-brand-soft">EvoniaAI · 灵栈平云</p>
-        <h1 class="mt-6 text-4xl font-bold leading-tight text-white md:text-5xl">
-          Bilingual consulting for teams shipping the future
-        </h1>
+        <p class="text-sm uppercase tracking-[0.4em] text-brand-soft">About Us · 关于我们</p>
+        <h2 class="mt-6 text-3xl font-bold leading-tight text-white md:text-4xl">
+          Engineering Excellence Meets Global Vision
+        </h2>
         <p class="mt-4 text-lg text-slate-200">
           EvoniaAI（灵栈平云）是一家双语科技咨询公司，专注于 Web 产品战略、职业成长路径和企业级软件交付。我们与全球伙伴并肩作战，用深入的工程洞察和精细的体验设计帮助团队驶向新的高度。
         </p>
         <p class="mt-6 text-base text-slate-300">
           From discovery workshops to production-ready launches, we bridge design, engineering, and leadership so your organization can focus on lasting impact.
         </p>
-        <div class="mt-8 flex flex-wrap items-center gap-4 text-sm text-white/70">
-          <a
-            class="rounded-full bg-brand px-6 py-3 font-semibold text-slate-950 transition hover:scale-105"
-            href="#contact"
-          >
-            Start a project · 启动合作
-          </a>
-          <a
-            class="rounded-full border border-white/30 px-6 py-3 font-semibold transition hover:border-brand hover:text-brand"
-            href="https://i.annatarhe.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Meet the founder 创始人简介
-          </a>
-        </div>
       </div>
     </div>
     <div class="w-full max-w-md rounded-3xl border border-white/10 bg-slate-950/80 p-8">
@@ -67,7 +108,8 @@ import { services, differentiators, contactChannels } from "../constants";
     </div>
   </section>
 
-  <section id="services" class="mx-auto mt-24 w-full max-w-6xl py-10">
+  <!-- Services Section -->
+  <section id="services" class="mx-auto mt-24 w-full max-w-6xl py-10 px-4">
     <div class="text-center">
       <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Core Services 核心服务</p>
       <h2 class="mt-4 section-title text-white">From strategy to shipping · 从战略到交付</h2>
@@ -86,7 +128,8 @@ import { services, differentiators, contactChannels } from "../constants";
     </div>
   </section>
 
-  <section id="approach" class="mx-auto mt-24 w-full max-w-6xl py-10">
+  <!-- Approach Section -->
+  <section id="approach" class="mx-auto mt-24 w-full max-w-6xl py-10 px-4">
     <div class="grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-center">
       <div>
         <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Why EvoniaAI 为何选择我们</p>
@@ -103,10 +146,10 @@ import { services, differentiators, contactChannels } from "../constants";
           ))}
         </div>
       </div>
-      <aside class="rounded-3xl border border-brand-soft bg-slate-950/70 p-8 shadow-[0_0_60px_-30px_var(--brand-primary)]">
+      <aside class="rounded-3xl border border-brand-soft bg-slate-950/70 p-8 shadow-[0_0_60px_-30px_var(--at-primary-color)]">
         <h3 class="text-lg font-semibold text-white">Founder's note 创始人寄语</h3>
         <p class="mt-4 text-sm text-white/70 leading-relaxed">
-          “We founded EvoniaAI to help innovators move from imagination to enduring products. Whether you are exploring a new market, scaling a platform, or guiding a team to its next chapter, we will be there as your bilingual sparring partner.”
+          "We founded EvoniaAI to help innovators move from imagination to enduring products. Whether you are exploring a new market, scaling a platform, or guiding a team to its next chapter, we will be there as your bilingual sparring partner."
         </p>
         <a
           class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
@@ -120,7 +163,8 @@ import { services, differentiators, contactChannels } from "../constants";
     </div>
   </section>
 
-  <section id="contact" class="mx-auto mt-24 mb-16 w-full max-w-6xl rounded-3xl border border-brand-light bg-slate-950/80 p-10">
+  <!-- Contact Section -->
+  <section id="contact" class="mx-auto mt-24 mb-16 w-full max-w-6xl rounded-3xl border border-brand-light bg-slate-950/80 p-10 mx-4">
     <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
       <div class="max-w-xl">
         <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Contact 联系方式</p>

@@ -13,11 +13,20 @@ const { title = "EvoniaAI · 灵栈平云", description = "EvoniaAI is a bilingu
 <!doctype html>
 <html lang="zh-Hans">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="EvoniaAI - RSS Feed"
+      href={`${Astro.site}rss.xml`}
+    />
     <slot name="seo" />
     <title>{title}</title>
   </head>
@@ -27,3 +36,40 @@ const { title = "EvoniaAI · 灵栈平云", description = "EvoniaAI is a bilingu
     </LayoutShell>
   </body>
 </html>
+<style is:global>
+  :root {
+    --at-primary-color: oklch(71.33% 0.112 194.94);
+    --at-primary-color-light: oklch(71.33% 0.112 194.94 / 31.65%);
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background: black;
+    background-size: 224px;
+  }
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+
+  ::selection {
+    background-color: var(--at-primary-color);
+    color: rgba(249, 250, 251, 1);
+    -webkit-text-fill-color: rgba(249, 250, 251, 1);
+  }
+</style>

@@ -17,17 +17,12 @@
     "@astrojs/check": "^0.9.5",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^6.0.2",
-    "astro": "^5.14.7",
+    "astro": "^5.15.8",
     "tailwindcss": "^4.1.15",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.15"
   },
-  "packageManager": "pnpm@10.12.4",
-  "pnpm": {
-    "overrides": {
-      "volar-service-emmet": "0.0.67"
-    }
-  }
+  "packageManager": "pnpm@10.22.0"
 }
