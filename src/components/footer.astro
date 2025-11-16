@@ -1,7 +1,6 @@
 ---
 const socials = [
-  { label: "Email", href: "mailto:hello@evonia.ai" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/evoniaai" },
+  { label: "Email", href: "mailto:annatar.he+evoniaai@gmail.com" },
   { label: "Founder", href: "https://i.annatarhe.com/" }
 ];
 ---
@@ -15,7 +14,7 @@ const socials = [
         const nameNode = <span class="p-4">{item.label}</span>;
         return (
           <li>
-            <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" class="hover:underline">
+            <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
               {nameNode}
             </a>
           </li>
