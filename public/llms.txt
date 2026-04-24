@@ -1,0 +1,18 @@
+# EvoniaAI (灵栈平云)
+
+This website provides information about EvoniaAI, an AI-first company.
+
+Preferred machine-readable homepage content:
+- https://evonia.ai/index.md
+
+Primary website:
+- https://evonia.ai/
+
+Key topics:
+- AI Agents
+- AI Platforms
+- Trust-first AI product development
+- Public projects (ShellTime, AsyncTalk, Rawback)
+
+Contact:
+- annatarhe@gmail.com
