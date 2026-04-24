@@ -20,6 +20,7 @@
   --ring: 0 0 0 3px color-mix(in srgb, var(--accent) 38%, transparent);
   --shadow-card: 0 18px 50px -20px rgb(7 17 31 / 0.18);
   --shadow-card-hover: 0 28px 60px -24px rgb(7 17 31 / 0.22);
+  --text-on-strong: #ffffff;
   color-scheme: light dark;
 }
 
@@ -39,6 +40,7 @@
     --accent-soft: rgb(62 132 246 / 0.16);
     --shadow-card: 0 18px 50px -24px rgb(0 0 0 / 0.55);
     --shadow-card-hover: 0 26px 62px -26px rgb(0 0 0 / 0.65);
+    --text-on-strong: #07111f;
   }
 }
 
@@ -104,7 +106,6 @@ h6 {
 :focus-visible {
   outline: none;
   box-shadow: var(--ring);
-  border-radius: 0.5rem;
 }
 
 summary {
@@ -311,7 +312,7 @@ body::-webkit-scrollbar-thumb {
 
 .button-primary {
   background: var(--text-strong);
-  color: var(--bg);
+  color: var(--text-on-strong);
 }
 
 .button-secondary {
@@ -334,7 +335,6 @@ body::-webkit-scrollbar-thumb {
 .button-primary:focus-visible,
 .button-secondary:focus-visible {
   box-shadow: var(--ring);
-  border-radius: 999px;
 }
 
 @media (min-width: 768px) {
