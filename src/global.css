@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
-html {
-  --header-height: 4rem;
-  --footer-height: 8rem;
-  --body-min-height: calc(100vh - var(--header-height) - var(--footer-height));
-  --at-primary-color: oklch(71.33% 0.112 194.94);
-  --brand-primary: oklch(71.33% 0.112 194.94);
-  --brand-dark: #050b14;
-  --brand-light: #f5f8ff;
+:root {
+  --bg: #f8fbff;
+  --surface: #ffffff;
+  --surface-strong: #ffffff;
+  --surface-blur: rgb(255 255 255 / 0.78);
+  --text: #243044;
+  --text-strong: #07111f;
+  --text-muted: #526071;
+  --text-soft: #8793a3;
+  --border: rgb(14 32 56 / 0.12);
+  --accent: #2775f6;
+  --accent-strong: #145bd7;
+  --accent-soft: #e8f1ff;
   color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #07111f;
+    --surface: #0d1a2b;
+    --surface-strong: #101f33;
+    --surface-blur: rgb(13 26 43 / 0.78);
+    --text: #d9e4f2;
+    --text-strong: #f8fbff;
+    --text-muted: #a7b5c8;
+    --text-soft: #6f7f93;
+    --border: rgb(205 224 255 / 0.14);
+    --accent: #6aa8ff;
+    --accent-strong: #8ec4ff;
+    --accent-soft: rgb(62 132 246 / 0.16);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
 }
 
 html,
 body {
   margin: 0;
-  padding: 0;
   min-height: 100%;
-  font-family: "Lora", "Noto Sans SC", Georgia, "Times New Roman", serif;
-  background-color: var(--brand-dark);
-  color: white;
-  font-weight: 400;
-  letter-spacing: 0.01em;
+  font-family: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  letter-spacing: 0;
+}
+
+body {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 68%, transparent), transparent 36rem),
+    linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--surface) 46%, var(--bg)));
 }
 
 a {
@@ -29,151 +60,222 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-/* Typography hierarchy with elegant fonts */
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", "Noto Sans SC", Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
 }
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0;
 }
 
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-.text-brand,
-.text-primary {
-  color: var(--at-primary-color);
-}
-
-.bg-brand,
-.bg-primary {
-  background-color: var(--at-primary-color);
-}
-
-.border-brand,
-.border-primary {
-  border-color: var(--at-primary-color);
-}
-
-.text-brand-soft {
-  color: color-mix(in srgb, var(--brand-primary) 80%, white 20%);
-}
-
-.border-brand-strong {
-  border-color: color-mix(in srgb, var(--brand-primary) 90%, transparent);
-}
-
-.border-brand-soft {
-  border-color: color-mix(in srgb, var(--brand-primary) 65%, transparent);
-}
-
-.border-brand-light {
-  border-color: color-mix(in srgb, var(--brand-primary) 35%, transparent);
-}
-
-.hover\:border-brand:hover {
-  border-color: var(--brand-primary);
-}
-
-.hover\:bg-brand:hover {
-  background-color: var(--brand-primary);
-}
-
-.hover\:text-brand:hover {
-  color: var(--brand-primary);
+::selection {
+  color: white;
+  background: var(--accent);
 }
 
 body::-webkit-scrollbar {
-  width: 0.25rem;
-  background-color: rgb(31, 41, 55);
+  width: 0.4rem;
 }
 
-body::-webkit-scrollbar-track,
-.at-scrollbar::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+body::-webkit-scrollbar-track {
+  background: var(--bg);
 }
 
 body::-webkit-scrollbar-thumb {
-  border-radius: 0.25rem;
-  background-color: rgb(156, 163, 175);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-soft) 60%, transparent);
 }
 
-.at-scrollbar::-webkit-scrollbar {
-  border-radius: 0.25rem;
-  width: 0.375rem;
-  background-color: rgb(55, 61, 81);
+.hero-section {
+  position: relative;
+  overflow: hidden;
 }
 
-.at-scrollbar::-webkit-scrollbar-thumb {
-  border-radius: 0.25rem;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+.hero-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--accent) 13%, transparent), transparent 42%),
+    linear-gradient(180deg, transparent, var(--bg) 92%);
+  pointer-events: none;
+}
+
+.hero-section > div {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-panel,
+.quiet-card,
+.service-row,
+.project-card,
+.founder-band,
+.contact-card {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
+  box-shadow: 0 24px 70px rgb(7 17 31 / 0.08);
+}
+
+.hero-panel {
+  border-radius: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 76%, transparent), transparent),
+    color-mix(in srgb, var(--surface-strong) 92%, transparent);
+}
+
+.section-shell {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 5rem 1rem 0;
+}
+
+.section-heading {
+  max-width: 44rem;
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-strong);
 }
 
 .section-title {
-  @apply text-3xl font-semibold md:text-4xl;
-  font-family: "Playfair Display", "Noto Sans SC", Georgia, serif;
-  letter-spacing: -0.02em;
+  margin-top: 1rem;
+  max-width: 48rem;
+  color: var(--text-strong);
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.12;
 }
 
-.section-paragraph {
-  @apply text-base md:text-lg text-slate-200;
-  line-height: 1.75;
-  font-family: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 300;
+.section-copy {
+  max-width: 42rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
 }
 
-/* Animation keyframes from AsyncTalk */
-@keyframes animation-fade-in {
-  from {
-    transform: scale(1.1);
-    opacity: 0;
+.quiet-card {
+  min-height: 16rem;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+}
+
+.service-row {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  min-height: 24rem;
+  flex-direction: column;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+  background: color-mix(in srgb, var(--surface-strong) 96%, var(--accent-soft));
+}
+
+.project-logo-wrap {
+  display: inline-flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: white;
+}
+
+.founder-band {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background:
+    linear-gradient(100deg, color-mix(in srgb, var(--accent-soft) 80%, transparent), transparent),
+    var(--surface-strong);
+}
+
+.contact-card {
+  border-radius: 1.5rem;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent 58%),
+    var(--surface-strong);
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.8rem 1.25rem;
+  font-weight: 700;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease,
+    border-color 180ms ease;
+}
+
+.button-primary {
+  background: var(--text-strong);
+  color: var(--bg);
+}
+
+.button-secondary {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+  color: var(--text-strong);
+}
+
+.button-primary:hover,
+.button-secondary:hover {
+  transform: translateY(-1px);
+  opacity: 0.88;
+}
+
+@media (min-width: 768px) {
+  .service-row {
+    grid-template-columns: 16rem 1fr;
   }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
-.with-fade-in {
-  animation: animation-fade-in 0.35s;
-}
-
-@keyframes animation-slide-in {
-  from {
-    transform: translateY(-1rem);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.with-slide-in {
-  animation: animation-slide-in 0.35s;
-}
-
-@keyframes animation-move-up {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(-1rem) scale(1.05);
+@media (min-width: 1024px) {
+  .founder-band {
+    grid-template-columns: 1fr auto;
   }
 }

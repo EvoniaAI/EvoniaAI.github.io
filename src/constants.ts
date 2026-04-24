@@ -1,131 +1,78 @@
+export const contactEmail = "annatarhe@gmail.com";
+
 export const services = [
   {
-    titleEn: "Web Development Consulting",
-    titleZh: "Web 开发咨询",
+    title: "AI Agent 构建",
+    tagline: "World-class AI agents",
     description:
-      "Architecture reviews, performance audits, and modern stack enablement for ambitious product teams.",
+      "从业务流程、工具调用、权限边界到上线评估，帮助团队构建可以真实交付结果的 AI Agent。",
   },
   {
-    titleEn: "Career Path Consulting",
-    titleZh: "职业发展咨询",
+    title: "AI Platform 设计",
+    tagline: "AI platforms for durable teams",
     description:
-      "Personalized mentoring, portfolio storytelling, and leadership coaching for engineers and designers.",
+      "为企业搭建模型、数据、工作流和内部工具的统一平台，让 AI 能力成为组织持续复用的基础设施。",
   },
   {
-    titleEn: "Enterprise Software Development",
-    titleZh: "企业级软件定制开发",
+    title: "AI 时代生产力升级",
+    tagline: "Capability and productivity",
     description:
-      "Design-to-delivery partnerships that transform complex workflows into resilient digital platforms.",
+      "把 AI 融入研发、内容、运营和决策流程，提升团队能力上限，同时保留人的判断、尊严与责任。",
   },
 ];
 
-export const differentiators = [
+export const principles = [
   {
-    title: "Bilingual Strategy",
-    text: "Clear communication in both English and Chinese keeps global stakeholders aligned throughout every engagement.",
+    title: "信任优先",
+    text: "我们相信 AI 产品首先要被信任。透明、可解释、可追责，是每一个系统进入真实业务前的底线。",
   },
   {
-    title: "Design Meets Engineering",
-    text: "We prototype rapidly, test with users, and ship production-grade code that scales across teams and devices.",
+    title: "全球视野",
+    text: "EvoniaAI 面向全球客户与用户工作，理解跨语言、跨文化、跨市场的软件交付挑战。",
   },
   {
-    title: "Mentorship Built-In",
-    text: "Clients gain sustainable capabilities with playbooks, documentation, and hands-on pairing for internal teams.",
+    title: "技术与尊严",
+    text: "技术不是替代人的借口。我们用 AI 放大人的能力，让团队在新时代拥有更好的工具与更高的主动性。",
+  },
+];
+
+export const projects = [
+  {
+    title: "ShellTime",
+    url: "https://shelltime.xyz",
+    logo: "/projects/shelltime.svg",
+    summary:
+      "AI 时代的开发者平台，追踪 shell 命令、AI coding 工具和编辑器活动，用隐私优先的分析、报告和数据所有权帮助开发者理解自己的工作流。",
+    tagline: "Developer platform for the AI era.",
+  },
+  {
+    title: "AsyncTalk",
+    url: "https://asynctalk.com",
+    logo: "/projects/asynctalk.webp",
+    summary:
+      "面向中文开发者的技术播客，持续分享 Web、前端工程化、AI 编程和下一代开发方式，把 Web 开发带向下一个高度。",
+    tagline: "Podcast for advanced web and AI engineering.",
+  },
+  {
+    title: "Rawback",
+    url: "https://rawback.app",
+    logo: "/projects/rawback.svg",
+    darkLogo: "/projects/rawback-dark.svg",
+    summary:
+      "面向摄影师的 AI 照片平台，提供照片整理、智能标签、人脸检测、场景识别、EXIF 提取和安全上传，让摄影工作流更轻。",
+    tagline: "AI-powered photo platform for photographers.",
   },
 ];
 
 export const contactChannels = [
   {
-    label: "Email 邮箱",
-    value: "annatar.he+evoniaai@gmail.com",
-    href: "mailto:annatar.he+evoniaai@gmail.com",
+    label: "Email",
+    value: contactEmail,
+    href: `mailto:${contactEmail}`,
   },
   {
-    label: "Founder 创始人",
-    value: "https://i.annatarhe.com/",
-    href: "https://i.annatarhe.com/",
+    label: "Founder",
+    value: "annatarhe.com",
+    href: "https://annatarhe.com",
   },
 ];
-
-export const pricingPlans = {
-  consulting: {
-    titleEn: "Consulting Services",
-    titleZh: "咨询服务",
-    descriptionEn: "Expert guidance and strategic advice for your technical challenges and career development",
-    descriptionZh: "为您的技术挑战和职业发展提供专家指导和战略建议",
-    options: [
-      {
-        nameEn: "Online Consulting",
-        nameZh: "在线咨询",
-        price: "$200",
-        unit: "per hour",
-        unitZh: "每小时",
-        features: [
-          "1-on-1 video consultation",
-          "Screen sharing & collaborative problem-solving",
-          "Follow-up documentation",
-          "Flexible scheduling across time zones",
-        ],
-        featuresZh: [
-          "一对一视频咨询",
-          "屏幕共享与协作解决问题",
-          "后续文档支持",
-          "跨时区灵活安排",
-        ],
-      },
-      {
-        nameEn: "In-Person Consulting",
-        nameZh: "现场咨询",
-        price: "$300",
-        unit: "per hour",
-        unitZh: "每小时",
-        features: [
-          "Face-to-face strategic sessions",
-          "On-site workshop facilitation",
-          "Team training and mentorship",
-          "Hands-on technical guidance",
-        ],
-        featuresZh: [
-          "面对面战略会议",
-          "现场工作坊引导",
-          "团队培训和指导",
-          "实践技术指导",
-        ],
-      },
-    ],
-  },
-  development: {
-    titleEn: "Project Development",
-    titleZh: "项目开发",
-    descriptionEn: "End-to-end software development services tailored to your business needs",
-    descriptionZh: "根据您的业务需求量身定制的端到端软件开发服务",
-    ctaEn: "Contact for Quote",
-    ctaZh: "联系获取报价",
-    features: [
-      {
-        titleEn: "Discovery & Planning",
-        titleZh: "发现与规划",
-        descriptionEn: "Requirements analysis, technical architecture design, and project roadmap creation",
-        descriptionZh: "需求分析、技术架构设计和项目路线图制定",
-      },
-      {
-        titleEn: "Design & Prototyping",
-        titleZh: "设计与原型",
-        descriptionEn: "UI/UX design, interactive prototypes, and user testing",
-        descriptionZh: "UI/UX设计、交互原型和用户测试",
-      },
-      {
-        titleEn: "Development & Delivery",
-        titleZh: "开发与交付",
-        descriptionEn: "Full-stack development, quality assurance, and production deployment",
-        descriptionZh: "全栈开发、质量保证和生产部署",
-      },
-      {
-        titleEn: "Maintenance & Support",
-        titleZh: "维护与支持",
-        descriptionEn: "Ongoing updates, performance optimization, and technical support",
-        descriptionZh: "持续更新、性能优化和技术支持",
-      },
-    ],
-  },
-};
