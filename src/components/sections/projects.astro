@@ -1,0 +1,38 @@
+---
+import { projects } from "../../constants";
+---
+
+<section id="projects" class="section-shell">
+  <div class="section-heading">
+    <p class="eyebrow">Public Projects</p>
+    <h2 class="section-title">我们做过的事，是最清晰的自我介绍。</h2>
+    <p class="section-copy mt-4">
+      三个公开项目分别面向开发者、技术内容创作者和摄影师，覆盖工具、内容和平台三种形态，也展示了 EvoniaAI 对 AI 时代软件的判断。
+    </p>
+  </div>
+
+  <div class="mt-10 grid gap-5 lg:grid-cols-3">
+    {projects.map((project) => (
+      <a class="project-card" href={project.url} target="_blank" rel="noreferrer">
+        <div class="flex items-center gap-4">
+          <span class="project-logo-wrap">
+            {project.darkLogo ? (
+              <>
+                <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10 dark:hidden" />
+                <img src={project.darkLogo} alt={`${project.title} logo`} class="hidden h-10 w-10 dark:block" />
+              </>
+            ) : (
+              <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10" />
+            )}
+          </span>
+          <div>
+            <h3 class="text-xl font-bold text-[var(--text-strong)]">{project.title}</h3>
+            <p class="project-tagline">{project.tagline}</p>
+          </div>
+        </div>
+        <p class="mt-5 leading-7 text-[var(--text-muted)]">{project.summary}</p>
+        <span class="project-cta">访问项目 ·</span>
+      </a>
+    ))}
+  </div>
+</section>
