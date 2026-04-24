@@ -2,36 +2,46 @@
 import { projects } from "../../constants";
 ---
 
-<section id="projects" class="section-shell">
-  <div class="section-heading">
-    <p class="eyebrow">Public Projects</p>
-    <h2 class="section-title">我们做过的事，是最清晰的自我介绍。</h2>
-    <p class="section-copy">
+<section id="projects" class="mx-auto w-full max-w-6xl px-4 py-[clamp(4rem,8vw,6rem)]">
+  <div class="max-w-[44rem]">
+    <p class="text-[0.8rem] font-bold uppercase tracking-[0.08em] text-accent-strong">Public Projects</p>
+    <h2 class="mt-3 max-w-[48rem] text-[clamp(2.125rem,4.8vw,3.5rem)] font-bold leading-[1.12] tracking-[-0.01em] text-text-strong">
+      我们做过的事，是最清晰的自我介绍。
+    </h2>
+    <p class="mt-5 max-w-[42rem] text-[1.05rem] leading-[1.75] text-text-muted">
       三个公开项目分别面向开发者、技术内容创作者和摄影师，覆盖工具、内容和平台三种形态，也展示了 EvoniaAI 对 AI 时代软件的判断。
     </p>
   </div>
 
   <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
     {projects.map((project) => (
-      <a class="project-card" href={project.url} target="_blank" rel="noreferrer">
+      <a
+        class="group flex flex-col gap-5 rounded-card border border-border bg-surface-strong/88 p-7 shadow-card transition duration-200 hover:-translate-y-[3px] hover:border-border-hover hover:bg-surface-hover hover:shadow-card-hover hover:no-underline"
+        href={project.url}
+        target="_blank"
+        rel="noreferrer"
+      >
         <div class="flex items-center gap-4">
-          <span class="project-logo-wrap">
+          <span class="inline-flex h-14 w-14 flex-none items-center justify-center overflow-hidden rounded-2xl border border-border bg-surface-strong">
             {project.darkLogo ? (
               <>
-                <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10 dark:hidden" />
-                <img src={project.darkLogo} alt={`${project.title} logo`} class="hidden h-10 w-10 dark:block" />
+                <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10 rounded-xl dark:hidden" />
+                <img src={project.darkLogo} alt={`${project.title} logo`} class="hidden h-10 w-10 rounded-xl dark:block" />
               </>
             ) : (
-              <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10" />
+              <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10 rounded-xl" />
             )}
           </span>
           <div>
-            <h3 class="text-[1.125rem] font-bold text-[var(--text-strong)] md:text-[1.25rem]">{project.title}</h3>
-            <p class="project-tagline">{project.tagline}</p>
+            <h3 class="text-[1.125rem] font-bold text-text-strong md:text-[1.25rem]">{project.title}</h3>
+            <p class="mt-0.5 text-[0.8125rem] text-accent-strong">{project.tagline}</p>
           </div>
         </div>
-        <p class="leading-[1.75] text-[var(--text-muted)]">{project.summary}</p>
-        <span class="project-cta">访问项目</span>
+        <p class="leading-[1.75] text-text-muted">{project.summary}</p>
+        <span class="mt-auto inline-flex items-center pt-2 text-sm font-bold text-text-strong">
+          访问项目
+          <span aria-hidden="true" class="ml-2 inline-block h-px w-1.5 bg-current transition-[width] duration-200 group-hover:w-5"></span>
+        </span>
       </a>
     ))}
   </div>

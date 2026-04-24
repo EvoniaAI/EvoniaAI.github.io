@@ -2,21 +2,21 @@
 import { contactChannels } from "../constants";
 ---
 
-<footer class="mt-16 border-t border-[var(--border)] px-4 py-12">
-  <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 text-sm text-[var(--text-muted)] md:flex-row md:items-center md:justify-between">
+<footer class="mt-16 border-t border-border px-4 py-12">
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 text-sm text-text-muted md:flex-row md:items-center md:justify-between">
     <div>
-      <p class="font-semibold tracking-tight text-[var(--text-strong)]">EvoniaAI · 灵栈平云</p>
+      <p class="font-semibold tracking-tight text-text-strong">EvoniaAI · 灵栈平云</p>
       <p class="mt-1.5">Trust first. AI first. Build with dignity.</p>
     </div>
     <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="Footer links">
       {contactChannels.map((item) => (
-        <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" class="transition-colors duration-200 hover:text-[var(--text-strong)]">
+        <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" class="transition-colors duration-200 hover:text-text-strong">
           {item.label}
         </a>
       ))}
     </nav>
   </div>
-  <div class="mx-auto mt-10 max-w-6xl border-t border-[var(--border)]/60 pt-6 text-xs text-[var(--text-soft)]">
+  <div class="mx-auto mt-10 max-w-6xl border-t border-border/60 pt-6 text-xs text-text-soft">
     © {new Date().getFullYear()} EvoniaAI. All rights reserved.
   </div>
 </footer>

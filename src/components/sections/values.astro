@@ -2,22 +2,24 @@
 import { principles } from "../../constants";
 ---
 
-<section id="values" class="section-shell">
-  <div class="section-heading">
-    <p class="eyebrow">Our Values</p>
-    <h2 class="section-title">以信任为起点，让 AI 成为组织能力。</h2>
-    <p class="section-copy">
+<section id="values" class="mx-auto w-full max-w-6xl px-4 py-[clamp(4rem,8vw,6rem)]">
+  <div class="max-w-[44rem]">
+    <p class="text-[0.8rem] font-bold uppercase tracking-[0.08em] text-accent-strong">Our Values</p>
+    <h2 class="mt-3 max-w-[48rem] text-[clamp(2.125rem,4.8vw,3.5rem)] font-bold leading-[1.12] tracking-[-0.01em] text-text-strong">
+      以信任为起点，让 AI 成为组织能力。
+    </h2>
+    <p class="mt-5 max-w-[42rem] text-[1.05rem] leading-[1.75] text-text-muted">
       三条原则贯穿我们所有的工作：从前期判断、系统设计到最终交付。它们不是口号，而是我们会被客观检验的承诺。
     </p>
   </div>
 
   <div class="mt-12 grid gap-5 md:grid-cols-3 lg:gap-6">
     {principles.map((item, i) => (
-      <article class="value-card">
-        <span class="value-num">0{i + 1}</span>
-        <h3 class="value-title">{item.title}</h3>
-        <p class="value-en">{item.en}</p>
-        <p class="value-body">{item.text}</p>
+      <article class="relative flex min-h-64 flex-col gap-3 rounded-card border border-border bg-surface-strong/88 p-7 shadow-card transition duration-200 hover:-translate-y-[3px] hover:border-border-hover hover:shadow-card-hover">
+        <span class="absolute right-6 top-5 font-mono text-xs tracking-[0.08em] tabular-nums text-text-soft">0{i + 1}</span>
+        <h3 class="text-2xl font-bold tracking-[-0.005em] text-text-strong">{item.title}</h3>
+        <p class="text-xs font-bold uppercase tracking-[0.08em] text-accent-strong">{item.en}</p>
+        <p class="mt-1 leading-[1.75] text-text-muted">{item.text}</p>
       </article>
     ))}
   </div>
