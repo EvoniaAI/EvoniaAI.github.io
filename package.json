@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "docs:pdf": "node scripts/markdown-to-pdf.cjs bid-docs/introduce.md bid-docs/introduce.pdf",
     "build": "astro check && astro build",
     "preview": "astro preview"
   },
@@ -22,7 +23,9 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.15"
+    "@tailwindcss/vite": "^4.1.15",
+    "marked": "^18.0.2",
+    "playwright-core": "^1.57.0"
   },
   "packageManager": "pnpm@10.22.0"
 }
