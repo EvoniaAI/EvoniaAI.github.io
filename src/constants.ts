@@ -24,14 +24,17 @@ export const services = [
 export const principles = [
   {
     title: "信任优先",
+    en: "Trust first",
     text: "我们相信 AI 产品首先要被信任。透明、可解释、可追责，是每一个系统进入真实业务前的底线。",
   },
   {
     title: "全球视野",
+    en: "Global vision",
     text: "EvoniaAI 面向全球客户与用户工作，理解跨语言、跨文化、跨市场的软件交付挑战。",
   },
   {
     title: "技术与尊严",
+    en: "Technology with dignity",
     text: "技术不是替代人的借口。我们用 AI 放大人的能力，让团队在新时代拥有更好的工具与更高的主动性。",
   },
 ];
@@ -69,10 +72,18 @@ export const contactChannels = [
     label: "Email",
     value: contactEmail,
     href: `mailto:${contactEmail}`,
+    hint: "最直接的方式 · 一个清晰的问题开始合作",
   },
   {
     label: "Founder",
     value: "annatarhe.com",
     href: "https://annatarhe.com",
+    hint: "了解创始人的思考与工作轨迹",
+  },
+  {
+    label: "GitHub",
+    value: "github.com/EvoniaAI",
+    href: "https://github.com/EvoniaAI",
+    hint: "我们的公开工作与开源实践",
   },
 ];
