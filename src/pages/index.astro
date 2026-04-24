@@ -1,192 +1,171 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SEOTags from "../components/seo/seo-tags.astro";
-import { services, differentiators, contactChannels } from "../constants";
-// Placeholder images - will need to be replaced with actual assets
-// import BgImg from "../images/bg-hero.png";
-// import TitleImage from "../images/title.png";
+import { contactEmail, principles, projects, services } from "../constants";
+
+const description =
+  "EvoniaAI 是一家 AI First 公司，帮助全球客户构建世界级 AI Agents 与 AI Platforms，让团队在 AI 时代获得更强生产力与能力。";
 ---
 
-<Layout title="EvoniaAI · 灵栈平云" description="EvoniaAI offers bilingual web development consulting, career path coaching, and enterprise software delivery services.">
+<Layout title="EvoniaAI · AI First Company" description={description}>
   <SEOTags
     slot="seo"
-    title="EvoniaAI · 灵栈平云"
-    description="EvoniaAI provides web development consulting, career mentoring, and enterprise-grade software solutions."
+    title="EvoniaAI · AI First Company"
+    description={description}
     urlPath="/"
+    image="/logo.svg"
   >
     <script
       slot="jsonld"
       type="application/ld+json"
       is:inline
       set:html={JSON.stringify({
-        "@context": Astro.site,
+        "@context": "https://schema.org",
         "@type": "Organization",
-        name: "EvoniaAI · 灵栈平云",
-        description: "EvoniaAI is a bilingual consulting studio specializing in web development, career guidance, and enterprise software.",
+        name: "EvoniaAI",
+        alternateName: "灵栈平云",
+        description,
         url: Astro.site,
+        founder: {
+          "@type": "Person",
+          name: "AnnatarHe",
+          url: "https://annatarhe.com",
+        },
+        email: contactEmail,
       })}
     />
   </SEOTags>
 
-  <!-- Hero Section with AsyncTalk Pattern -->
-  <div
-    class="h-[75vh] min-h-[250px] m-auto max-w-screen-lg bg-black bg-[center_top_30%] bg-no-repeat sm:bg-[length:auto_50%] bg-[length:95%_auto]"
-    style={{
-      backgroundColor: "#020617",
-      backgroundImage: "linear-gradient(135deg, color-mix(in srgb, var(--at-primary-color) 40%, transparent), color-mix(in srgb, var(--at-primary-color) 15%, #020617), #020617)"
-    }}
-  >
-    <div class="h-full backdrop-blur-md">
-      <div
-        class="h-full select-none -translate-y-1/4 flex flex-col justify-center max-w-[60%] m-auto text-center"
-      >
-        <h1 class="text-5xl md:text-6xl font-bold text-white">
-          EvoniaAI
+  <section class="hero-section">
+    <div class="mx-auto grid min-h-[calc(100vh-5rem)] max-w-6xl items-center gap-12 px-4 py-20 md:grid-cols-[1.1fr_0.9fr] md:py-28">
+      <div>
+        <p class="eyebrow">AI First Company · 灵栈平云</p>
+        <h1 class="mt-5 max-w-4xl text-5xl font-semibold leading-tight text-[var(--text-strong)] md:text-7xl">
+          信任优先，构建 AI 时代的真实能力。
         </h1>
-        <p class="text-2xl md:text-3xl text-brand mt-2">灵栈平云</p>
-        <h3 class="text-white mt-10 italic text-center w-full text-lg">
-          Bilingual consulting for teams shipping the future
-        </h3>
-        <p class="text-white/70 mt-4 text-base">
-          从战略到交付 · From strategy to shipping
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-[var(--text-muted)] md:text-xl">
+          EvoniaAI 帮助全球客户构建世界级 AI Agents 与 AI Platforms，把先进技术落到可运行、可信任、可持续演进的业务系统里。
         </p>
-        <div class="mt-8 flex flex-wrap justify-center gap-4">
-          <a
-            class="rounded-full bg-brand px-6 py-3 font-semibold text-slate-950 transition hover:scale-105"
-            href="/pricing"
-          >
-            View Pricing · 查看价格
-          </a>
-          <a
-            class="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition hover:border-brand hover:text-brand"
-            href="#contact"
-          >
-            Start a project · 启动合作
-          </a>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a class="button-primary" href={`mailto:${contactEmail}`}>启动合作</a>
+          <a class="button-secondary" href="#projects">查看公开项目</a>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- About Section -->
-  <section id="about" class="mx-auto mt-16 flex w-full max-w-6xl flex-col items-center gap-10 py-10 px-4 md:flex-row md:items-start">
-    <div
-      class="relative w-full flex-1 overflow-hidden rounded-3xl p-[1px]"
-      style={{
-        background: "linear-gradient(135deg, color-mix(in srgb, var(--at-primary-color) 40%, transparent), color-mix(in srgb, var(--at-primary-color) 15%, #020617), #020617)"
-      }}
-    >
-      <div class="h-full w-full rounded-[inherit] bg-slate-950/90 p-10">
-        <p class="text-sm uppercase tracking-[0.4em] text-brand-soft">About Us · 关于我们</p>
-        <h2 class="mt-6 text-3xl font-bold leading-tight text-white md:text-4xl">
-          Engineering Excellence Meets Global Vision
-        </h2>
-        <p class="mt-4 text-lg text-slate-200">
-          EvoniaAI（灵栈平云）是一家双语科技咨询公司，专注于 Web 产品战略、职业成长路径和企业级软件交付。我们与全球伙伴并肩作战，用深入的工程洞察和精细的体验设计帮助团队驶向新的高度。
-        </p>
-        <p class="mt-6 text-base text-slate-300">
-          From discovery workshops to production-ready launches, we bridge design, engineering, and leadership so your organization can focus on lasting impact.
+      <div class="hero-panel">
+        <img src="/logo.svg" alt="EvoniaAI logo" class="h-24 w-24 rounded-3xl bg-white shadow-sm" />
+        <p class="mt-8 text-sm font-semibold text-[var(--accent-strong)]">Trust · Global · Dignity</p>
+        <h2 class="mt-4 text-3xl font-semibold text-[var(--text-strong)]">我们相信技术与尊严可以让世界更好。</h2>
+        <p class="mt-4 leading-7 text-[var(--text-muted)]">
+          AI 不应该只带来更快的自动化，也应该带来更清晰的责任、更好的协作，以及更值得信任的产品体验。
         </p>
       </div>
-    </div>
-    <div class="w-full max-w-md rounded-3xl border border-white/10 bg-slate-950/80 p-8">
-      <h2 class="text-xl font-semibold text-white">Highlights 亮点</h2>
-      <ul class="mt-6 space-y-5 text-sm text-white/70">
-        <li class="flex items-start gap-3">
-          <span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand"></span>
-          <p>Full-stack web architectures, design systems, and AI-augmented workflows.</p>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand"></span>
-          <p>职业路径规划、团队辅导与技术领导力训练营。</p>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand"></span>
-          <p>Enterprise-grade delivery with transparent roadmaps and measurable outcomes.</p>
-        </li>
-      </ul>
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="mx-auto mt-24 w-full max-w-6xl py-10 px-4">
-    <div class="text-center">
-      <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Core Services 核心服务</p>
-      <h2 class="mt-4 section-title text-white">From strategy to shipping · 从战略到交付</h2>
-      <p class="section-paragraph mt-4 text-center">
-        Tailored engagements designed for product leaders, CTOs, and founders who expect craftsmanship and speed.
+  <section id="mission" class="section-shell">
+    <div class="section-heading">
+      <p class="eyebrow">Mission</p>
+      <h2 class="section-title">以信任为起点，让 AI 成为组织能力。</h2>
+      <p class="section-copy">
+        我们和创始人、产品团队、工程团队一起工作，把 AI 从演示样例推进到可被客户依赖的产品和平台。
       </p>
     </div>
-    <div class="mt-12 grid gap-6 md:grid-cols-3">
-      {services.map((service) => (
-        <article class="group rounded-3xl border border-white/10 bg-slate-950/70 p-8 transition hover:border-brand hover:bg-slate-900/80">
-          <h3 class="text-xl font-semibold text-white group-hover:text-brand">{service.titleEn}</h3>
-          <p class="mt-1 text-sm text-white/60">{service.titleZh}</p>
-          <p class="mt-4 text-sm text-white/70 leading-relaxed">{service.description}</p>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      {principles.map((item) => (
+        <article class="quiet-card">
+          <h3 class="text-xl font-semibold text-[var(--text-strong)]">{item.title}</h3>
+          <p class="mt-4 leading-7 text-[var(--text-muted)]">{item.text}</p>
         </article>
       ))}
     </div>
   </section>
 
-  <!-- Approach Section -->
-  <section id="approach" class="mx-auto mt-24 w-full max-w-6xl py-10 px-4">
-    <div class="grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-center">
+  <section id="services" class="section-shell">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
       <div>
-        <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Why EvoniaAI 为何选择我们</p>
-        <h2 class="mt-4 section-title text-white">Partnership built on clarity 合作共创清晰价值</h2>
-        <p class="section-paragraph mt-5">
-          We co-create with your team, uncovering the context behind every decision. Each engagement blends research, product strategy, and accountable delivery so your roadmap can move faster without sacrificing quality.
+        <p class="eyebrow">What We Build</p>
+        <h2 class="section-title">从 Agent 到 Platform，交付能被使用的 AI 系统。</h2>
+        <p class="section-copy mt-5">
+          我们关注生产系统，而不是一次性 demo。每个项目都围绕业务目标、数据边界、工具集成、用户体验和长期维护展开。
         </p>
-        <div class="mt-8 grid gap-6">
-          {differentiators.map((item) => (
-            <div class="rounded-2xl border border-white/10 bg-slate-950/80 p-6">
-              <h3 class="text-lg font-semibold text-white">{item.title}</h3>
-              <p class="mt-2 text-sm text-white/70 leading-relaxed">{item.text}</p>
-            </div>
-          ))}
-        </div>
       </div>
-      <aside class="rounded-3xl border border-brand-soft bg-slate-950/70 p-8 shadow-[0_0_60px_-30px_var(--at-primary-color)]">
-        <h3 class="text-lg font-semibold text-white">Founder's note 创始人寄语</h3>
-        <p class="mt-4 text-sm text-white/70 leading-relaxed">
-          "We founded EvoniaAI to help innovators move from imagination to enduring products. Whether you are exploring a new market, scaling a platform, or guiding a team to its next chapter, we will be there as your bilingual sparring partner."
-        </p>
-        <a
-          class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline"
-          href="https://i.annatarhe.com/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Visit the founder's desk 访问创始人主页 →
-        </a>
-      </aside>
+      <div class="grid gap-4">
+        {services.map((service) => (
+          <article class="service-row">
+            <div>
+              <h3 class="text-2xl font-semibold text-[var(--text-strong)]">{service.title}</h3>
+              <p class="mt-1 text-sm font-medium text-[var(--accent-strong)]">{service.tagline}</p>
+            </div>
+            <p class="leading-7 text-[var(--text-muted)]">{service.description}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="mx-auto mt-24 mb-16 w-full max-w-6xl rounded-3xl border border-brand-light bg-slate-950/80 p-10 mx-4">
-    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-      <div class="max-w-xl">
-        <p class="text-sm uppercase tracking-[0.3em] text-brand-soft">Contact 联系方式</p>
-        <h2 class="mt-4 section-title text-white">Let's explore possibilities · 一起探索可能性</h2>
-        <p class="section-paragraph mt-4">
-          Share your ambition—whether it's a platform overhaul, a go-to-market push, or building career pathways for your team. We will design a blueprint tailored to your timeline and resources.
+  <section id="projects" class="section-shell">
+    <div class="section-heading">
+      <p class="eyebrow">Public Projects</p>
+      <h2 class="section-title">公开项目，是我们对未来工作方式的持续实践。</h2>
+      <p class="section-copy">
+        这些产品覆盖开发者、技术内容和摄影工作流，也展示了 EvoniaAI 对 AI 时代软件形态的判断。
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      {projects.map((project) => (
+        <a class="project-card" href={project.url} target="_blank" rel="noreferrer">
+          <div class="flex items-center gap-4">
+            <span class="project-logo-wrap">
+              {project.darkLogo ? (
+                <>
+                  <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10 dark:hidden" />
+                  <img src={project.darkLogo} alt={`${project.title} logo`} class="hidden h-10 w-10 dark:block" />
+                </>
+              ) : (
+                <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10" />
+              )}
+            </span>
+            <div>
+              <h3 class="text-xl font-semibold text-[var(--text-strong)]">{project.title}</h3>
+              <p class="text-sm text-[var(--accent-strong)]">{project.tagline}</p>
+            </div>
+          </div>
+          <p class="mt-6 leading-7 text-[var(--text-muted)]">{project.summary}</p>
+          <span class="mt-8 inline-flex text-sm font-semibold text-[var(--text-strong)]">访问项目</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="founder" class="section-shell">
+    <div class="founder-band">
+      <div>
+        <p class="eyebrow">Founder</p>
+        <h2 class="section-title">找到创始人，开始一次严肃的 AI 产品讨论。</h2>
+        <p class="section-copy mt-5">
+          如果你正在思考 Agent、AI 平台、研发效率或新产品形态，可以从一个清晰的问题开始。我们会一起判断什么值得做，如何做，以及怎样交付到真实用户手里。
         </p>
       </div>
-      <ul class="grid gap-4 text-sm text-white/80 md:w-72">
-        {contactChannels.map((channel) => (
-          <li class="rounded-2xl border border-white/10 bg-slate-900/80 p-5">
-            <p class="text-xs uppercase tracking-[0.3em] text-white/40">{channel.label}</p>
-            {channel.href ? (
-              <a class="mt-2 block text-lg font-semibold text-brand hover:underline" href={channel.href} target={channel.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
-                {channel.value}
-              </a>
-            ) : (
-              <p class="mt-2 text-lg font-semibold text-brand">{channel.value}</p>
-            )}
-          </li>
-        ))}
-      </ul>
+      <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+        <a class="button-primary" href={`mailto:${contactEmail}`}>联系 EvoniaAI</a>
+        <a class="button-secondary" href="https://annatarhe.com" target="_blank" rel="noreferrer">访问 annatarhe.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-shell pb-20">
+    <div class="contact-card">
+      <p class="eyebrow">Contact</p>
+      <h2 class="mt-4 text-3xl font-semibold text-[var(--text-strong)] md:text-5xl">让 AI 成为你的下一层能力。</h2>
+      <p class="mt-5 max-w-2xl leading-8 text-[var(--text-muted)]">
+        写下你的目标、现有系统和想解决的问题。我们会从信任、交付和长期能力建设的角度开始。
+      </p>
+      <a class="mt-8 inline-flex text-lg font-semibold text-[var(--text-strong)] hover:text-[var(--accent-strong)]" href={`mailto:${contactEmail}`}>
+        {contactEmail}
+      </a>
     </div>
   </section>
 </Layout>

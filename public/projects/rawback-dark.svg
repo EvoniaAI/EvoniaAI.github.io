@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="6 6 52 52">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(45, 180, 224, 1)"/>
+      <stop offset="50%" style="stop-color:rgba(87, 199, 133, 1)"/>
+      <stop offset="100%" style="stop-color:rgba(212, 206, 159, 1)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="transparent" />
+
+  <!-- Aperture blades - light for dark theme -->
+  <g stroke="#e4e4e7" stroke-width="3" stroke-linecap="round" opacity="0.9">
+    <line x1="32" y1="8" x2="32" y2="18"/>
+    <line x1="52.8" y1="20" x2="44.6" y2="27"/>
+    <line x1="52.8" y1="44" x2="44.6" y2="37"/>
+    <line x1="32" y1="56" x2="32" y2="46"/>
+    <line x1="11.2" y1="44" x2="19.4" y2="37"/>
+    <line x1="11.2" y1="20" x2="19.4" y2="27"/>
+  </g>
+
+  <!-- Center backup arrow - perfectly centered at (32,32) -->
+  <circle cx="32" cy="32" r="10" fill="url(#iconGrad)"/>
+
+  <!-- Arc: center (32,32), radius 6 -->
+  <!-- Start at left: (26,32), sweep clockwise 270° to bottom: (32,38) -->
+  <path d="M26 32 A6 6 0 1 1 38 32" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Arrowhead at end of arc, pointing right -->
+  <!-- <polyline points="35,29 38,32 35,35" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/> -->
+</svg>

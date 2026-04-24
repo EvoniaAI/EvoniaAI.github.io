@@ -1,0 +1,22 @@
+<svg width="1000" height="1000" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Soft circular shape, not quite a clock -->
+  <circle cx="128" cy="128" r="118" fill="#60a5fa" fill-opacity="0.25"/>
+
+  <!-- Subtle arc suggesting time/movement -->
+  <path d="M 44 128 Q 128 44 212 128"
+        fill="none"
+        stroke="#3b82f6"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+  <!-- Simple prompt symbol -->
+  <path d="M 81 128 L 106 153 L 81 178"
+        fill="none"
+        stroke="#2563eb"
+        stroke-width="12"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- Floating dot suggesting time -->
+  <circle cx="175" cy="153" r="8" fill="#3b82f6"/>
+</svg>

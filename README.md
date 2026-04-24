@@ -1,6 +1,6 @@
 # EvoniaAI · 灵栈平云
 
-This repository contains the marketing website for **EvoniaAI (灵栈平云)**, built with [Astro](https://astro.build/) and inspired by the [AsyncTalk/website](https://github.com/AsyncTalk/website) project structure.
+This repository contains the marketing website for **EvoniaAI (灵栈平云)**, an AI First company built with [Astro](https://astro.build/).
 
 ## Getting started
 
@@ -27,25 +27,25 @@ The development server defaults to `http://localhost:4321`.
 .
 ├── astro.config.mjs       # Astro configuration with Tailwind + sitemap
 ├── package.json           # Scripts and dependencies
-├── public/                # Static assets (favicons, social image)
+├── public/                # Static assets (favicons, social image, project logos)
 ├── src/
 │   ├── components/        # Header, footer, SEO helpers, layout shell
-│   ├── constants.ts       # Bilingual copy used across sections
+│   ├── constants.ts       # Site copy and project data
 │   ├── global.css         # Tailwind entry point and shared tokens
 │   ├── layouts/           # Base HTML document shell
-│   └── pages/             # Astro pages (index)
+│   └── pages/             # Astro pages
 └── tsconfig.json          # TypeScript configuration
 ```
 
 ## Content
 
-The homepage is bilingual (English/Chinese) and highlights:
+The homepage is Chinese-first and highlights:
 
-- Web development consulting (Web 开发咨询)
-- Career path consulting (职业发展咨询)
-- Enterprise-grade software development (企业级软件定制开发)
+- Trust-first AI product development
+- World-class AI Agents and AI Platforms
+- Public projects: ShellTime, AsyncTalk, and Rawback
 
-It also introduces the founder and provides clear contact information for prospective partners.
+It also introduces the founder and provides direct email contact for prospective partners.
 
 ## Deployment
 
