@@ -214,9 +214,14 @@ body::-webkit-scrollbar-thumb {
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 1rem;
-  background: white;
+  background: var(--surface-strong);
+}
+
+.project-logo-wrap img {
+  border-radius: 0.75rem;
 }
 
 .founder-band {
