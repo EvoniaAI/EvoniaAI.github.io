@@ -4,10 +4,9 @@ import { contactEmail } from "../constants";
 const currentPath = Astro.url.pathname;
 const prefix = currentPath === "/" ? "" : "/";
 const navLinks = [
-  { href: `${prefix}#mission`, label: "使命" },
-  { href: `${prefix}#services`, label: "服务" },
+  { href: `${prefix}#values`, label: "价值观" },
   { href: `${prefix}#projects`, label: "项目" },
-  { href: `${prefix}#founder`, label: "创始人" },
+  { href: `${prefix}#contact`, label: "联系" },
 ];
 ---
 
@@ -29,7 +28,7 @@ const navLinks = [
     </nav>
 
     <a class="hidden rounded-full bg-[var(--text-strong)] px-4 py-2 text-sm font-semibold text-[var(--bg)] transition hover:opacity-85 hover:no-underline md:inline-flex" href={`mailto:${contactEmail}`}>
-      联系
+      启动合作
     </a>
 
     <details class="group relative md:hidden">
@@ -44,7 +43,7 @@ const navLinks = [
             </a>
           ))}
           <a href={`mailto:${contactEmail}`} class="rounded-xl px-3 py-2 font-semibold text-[var(--text-strong)] hover:bg-[var(--surface)] hover:no-underline">
-            联系
+            启动合作
           </a>
         </nav>
       </div>

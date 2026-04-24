@@ -13,6 +13,8 @@
   --accent: #2775f6;
   --accent-strong: #145bd7;
   --accent-soft: #e8f1ff;
+  --gradient-brand: linear-gradient(135deg, #8ec4ff 0%, #73b5fa 52%, #5aa4f5 100%);
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   color-scheme: light dark;
 }
 
@@ -278,4 +280,219 @@ body::-webkit-scrollbar-thumb {
   .founder-band {
     grid-template-columns: 1fr auto;
   }
+}
+
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-panel::after {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  background: var(--gradient-brand);
+  filter: blur(60px);
+  opacity: 0.35;
+  pointer-events: none;
+  content: "";
+}
+
+.hero-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hero-chip {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  padding: 0.375rem 0.75rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+.hero-marks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 3rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  max-width: 35rem;
+}
+
+.hero-marks > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero-marks dt {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--accent-strong);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-marks dd {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.value-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  min-height: 18rem;
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.5rem;
+  background: color-mix(in srgb, var(--surface-strong) 90%, transparent);
+  box-shadow: 0 24px 70px rgb(7 17 31 / 0.08);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.value-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+}
+
+.value-num {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  letter-spacing: 0.08em;
+}
+
+.value-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.value-en {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-strong);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.value-body {
+  margin-top: 0.25rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.project-tagline {
+  margin-top: 0.125rem;
+  font-size: 0.8125rem;
+  color: var(--accent-strong);
+}
+
+.project-cta {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.contact-card {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .contact-card {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: start;
+  }
+}
+
+.contact-channels {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.channel-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 1.25rem 1.375rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--surface-strong) 94%, transparent);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.channel-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 46%, var(--border));
+  background: color-mix(in srgb, var(--surface-strong) 100%, var(--accent-soft));
+}
+
+.channel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.channel-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--accent-strong);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.channel-arrow {
+  font-size: 1rem;
+  color: var(--text-soft);
+  transition:
+    transform 180ms ease,
+    color 180ms ease;
+}
+
+.channel-card:hover .channel-arrow {
+  transform: translateX(4px);
+  color: var(--accent-strong);
+}
+
+.channel-value {
+  font-family: var(--font-mono);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-strong);
+  word-break: break-all;
+}
+
+.channel-hint {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-muted);
 }

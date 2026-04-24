@@ -4,93 +4,72 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-EvoniaAI.github.io is a bilingual (English/Chinese) marketing website for a tech consulting studio built with Astro. The site emphasizes performance through static generation and minimal client-side JavaScript.
+EvoniaAI.github.io is the marketing site for **EvoniaAI (灵栈平云)**, an AI-first consulting studio. It is a single-page Astro site, Chinese-first with English taglines, positioning services around AI Agents, AI Platforms, and productivity upgrades.
 
 ## Development Commands
 
 ```bash
-# Install dependencies (use pnpm, not npm)
-pnpm install
-
-# Start development server at http://localhost:4321
-pnpm dev
-
-# Build for production (runs type checking + build)
-pnpm build
-
-# Preview production build locally
-pnpm preview
+pnpm install        # install deps (pnpm is required — see packageManager in package.json)
+pnpm dev            # dev server at http://localhost:4321
+pnpm build          # runs `astro check` (typecheck) then `astro build`
+pnpm preview        # serve the built site from dist/
 ```
+
+Node.js v24 (see `.node-version`). There is no test runner, lint command, or formatter configured.
 
 ## Architecture
 
-### Technology Stack
-- **Astro 5.15.8** - Static site generator
-- **TypeScript** (strict mode) - Type safety
-- **Tailwind CSS 4** - Utility-first styling with custom properties
-- **pnpm** - Package manager (required)
-- **Node.js v24** - Runtime version
+### Stack
+- Astro 6 + TypeScript (strict) for static generation
+- Tailwind CSS 4 via the `@tailwindcss/vite` plugin (loaded in `astro.config.mjs`; `src/global.css` is the Tailwind entry via `@import "tailwindcss"`)
+- `@astrojs/sitemap` generates the sitemap; site URL is hardcoded to `https://evoniaai.github.io` in `astro.config.mjs`
 
-### Component Structure
-```
-Layout.astro (HTML document root)
-└── layout.astro (page wrapper with header/footer)
-    ├── header.astro (sticky nav with mobile menu)
-    ├── [page content]
-    └── footer.astro (social links)
-```
+### Layout composition (note the two "layout" files)
+There are two files both called "layout" that serve different roles — keep them straight when editing:
 
-### Key Files
-- `src/constants.ts` - All bilingual content data (services, differentiators, contact, pricing)
-- `src/global.css` - CSS custom properties for brand colors and utilities
-- `.github/workflows/deploy.yml` - GitHub Pages deployment pipeline
+- `src/layouts/Layout.astro` — the HTML document shell. Owns `<head>`, fonts (Inter + Noto Sans SC), favicon, theme-color, and a `seo` named slot for per-page `<meta>` injection.
+- `src/components/layout.astro` — the body-level shell. Renders `<Header />`, `<main><slot /></main>`, `<Footer />` inside the `Layout.astro` body.
+
+Pages import `Layout.astro` (capital L), not `layout.astro`. SEO meta tags for a page go into the `seo` slot, rendered through `src/components/seo/seo-tags.astro`.
+
+### Content source
+All site copy lives in `src/constants.ts` (`services`, `principles`, `projects`, `contactChannels`, `contactEmail`). Pages iterate these arrays — do not hardcode copy in `.astro` files. Copy is Chinese-first with short English taglines; there is no translation table or `En`/`Zh` field convention.
+
+### Styling system
+`src/global.css` defines the design tokens as CSS custom properties on `:root`, with a `@media (prefers-color-scheme: dark)` block overriding them — theme is automatic, not toggled. Core tokens:
+
+- Surfaces: `--bg`, `--surface`, `--surface-strong`, `--surface-blur`
+- Text: `--text`, `--text-strong`, `--text-muted`, `--text-soft`
+- Accent: `--accent`, `--accent-strong`, `--accent-soft`
+- `--border`
+
+Component classes (also in `global.css`) encapsulate repeated patterns — prefer these over re-inventing them with Tailwind utilities: `.section-shell`, `.section-title`, `.section-copy`, `.eyebrow`, `.hero-section`, `.hero-panel`, `.quiet-card`, `.service-row`, `.project-card`, `.project-logo-wrap`, `.founder-band`, `.contact-card`, `.button-primary`, `.button-secondary`.
+
+Reference tokens with `bg-[var(--surface)]`, `text-[var(--text-strong)]`, etc. — Tailwind arbitrary values are the idiomatic way to consume the CSS variables.
+
+### Pages
+Only `src/pages/index.astro` exists. Any new top-level route is a new `.astro` file in `src/pages/`.
 
 ## Deployment
 
-The site auto-deploys to GitHub Pages when pushing to `main` branch:
-1. GitHub Actions builds the site
-2. Deploys to https://evoniaai.github.io
+`.github/workflows/deploy.yml` auto-deploys to GitHub Pages on push to `main` → https://evoniaai.github.io. The `dist/` output is the full deployable artifact.
 
-## Content Management
+## SEO
 
-All content is data-driven through `src/constants.ts`. When updating content:
-- Maintain bilingual structure with `En`/`Zh` suffixed properties
-- Keep translations synchronized
-- Follow existing data patterns for consistency
+- Open Graph / Twitter tags are emitted via `src/components/seo/seo-tags.astro` into the `Layout.astro` `seo` slot.
+- Social share image: `public/social-share.png`.
+- Sitemap is auto-generated by `@astrojs/sitemap`.
+- JSON-LD lives in `src/pages/index.astro`.
 
-## Styling Patterns
+## Commit Conventions
 
-The project uses CSS custom properties for theming:
-- `--brand-primary`, `--brand-dark`, `--brand-light` for color variations
-- Custom utility classes: `.text-brand`, `.bg-brand`, `.section-title`
-- Dark theme with blue accent (`oklch(71.33% 0.112 194.94)`)
-- Responsive breakpoints via Tailwind's `md:` prefix
+Conventional Commits with a scope: `type(scope): description`. Scope should be the module/area touched (e.g. `home`, `header`, `constants`, `deps`). Examples:
 
-## SEO Considerations
-
-- Site includes Open Graph and Twitter meta tags via `src/components/seo/seo-tags.astro`
-- Sitemap automatically generated by `@astrojs/sitemap` integration
-- Social share image at `/public/social-share.png`
-- JSON-LD schema markup on homepage and pricing page
-
-## Git Conventions
-
-### Commit Message Format
-Use the conventional commit format: `type(scope): description`
-
-Examples:
-- `feat(homepage): add testimonials section`
+- `feat(home): add testimonials section`
 - `fix(header): correct mobile menu alignment`
-- `docs(readme): update deployment instructions`
-- `style(global): adjust brand color values`
-- `refactor(constants): reorganize bilingual content structure`
-- `chore(deps): update Astro to latest version`
-
-Common types: feat, fix, docs, style, refactor, test, chore
+- `refactor(constants): reorganize project data`
+- `chore(deps): bump astro`
 
 ## Claude Code Integration
 
-The repository has Claude Code GitHub Actions configured:
-- `/claude` comment on issues/PRs triggers Claude Code response
-- Automatic PR reviews via `claude-code-review.yml`
-- Configuration in `.github/workflows/claude*.yml`
+Repo has Claude GitHub Actions wired up (`.github/workflows/claude.yml`, `claude-code-review.yml`): `/claude` in an issue/PR comment triggers a response, and PRs get automatic reviews.
