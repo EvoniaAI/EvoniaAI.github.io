@@ -51,7 +51,7 @@ export const projects = [
   {
     title: "AsyncTalk",
     url: "https://asynctalk.com",
-    logo: "/projects/asynctalk.webp",
+    logo: "/projects/asynctalk-logo.png",
     summary:
       "面向中文开发者的技术播客，持续分享 Web、前端工程化、AI 编程和下一代开发方式，把 Web 开发带向下一个高度。",
     tagline: "Podcast for advanced web and AI engineering.",
