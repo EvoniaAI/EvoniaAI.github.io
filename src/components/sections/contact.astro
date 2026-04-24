@@ -1,5 +1,8 @@
 ---
+import { ArrowUpRight, GitFork, Mail, UserRound } from "@lucide/astro";
 import { contactChannels } from "../../constants";
+
+const contactIcons = [Mail, UserRound, GitFork];
 ---
 
 <section id="contact" class="mx-auto w-full max-w-6xl px-4 py-[clamp(4rem,8vw,6rem)]">
@@ -16,21 +19,30 @@ import { contactChannels } from "../../constants";
       </p>
     </div>
     <div class="grid gap-4">
-      {contactChannels.map((c) => (
-        <a
-          class="group flex flex-col gap-2 rounded-2xl border border-border bg-surface-strong/94 px-6 py-5 transition duration-200 hover:-translate-y-0.5 hover:border-border-hover hover:bg-surface-strong hover:shadow-card hover:no-underline"
-          href={c.href}
-          target={c.href.startsWith("http") ? "_blank" : undefined}
-          rel="noreferrer"
-        >
-          <div class="flex items-center justify-between">
-            <span class="text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-accent-strong">{c.label}</span>
-            <span aria-hidden="true" class="text-base text-text-soft transition duration-200 group-hover:translate-x-1 group-hover:text-accent-strong">→</span>
-          </div>
-          <p class="break-all font-mono text-base font-semibold text-text-strong">{c.value}</p>
-          <p class="text-sm leading-[1.6] text-text-muted">{c.hint}</p>
-        </a>
-      ))}
+      {contactChannels.map((c, i) => {
+        const ContactIcon = contactIcons[i];
+
+        return (
+          <a
+            class="group flex gap-4 rounded-2xl border border-border bg-surface-strong/94 px-6 py-5 transition duration-200 hover:-translate-y-0.5 hover:border-border-hover hover:bg-surface-strong hover:shadow-card hover:no-underline"
+            href={c.href}
+            target={c.href.startsWith("http") ? "_blank" : undefined}
+            rel="noreferrer"
+          >
+            <span class="inline-flex h-10 w-10 flex-none items-center justify-center rounded-2xl border border-border bg-accent-soft text-accent-strong">
+              <ContactIcon aria-hidden="true" class="h-5 w-5" stroke-width={2.1} />
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="flex items-center justify-between gap-4">
+                <span class="text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-accent-strong">{c.label}</span>
+                <ArrowUpRight aria-hidden="true" class="h-4 w-4 flex-none text-text-soft transition duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-strong" stroke-width={2.25} />
+              </span>
+              <span class="mt-1 block break-all font-mono text-base font-semibold text-text-strong">{c.value}</span>
+              <span class="mt-2 block text-sm leading-[1.6] text-text-muted">{c.hint}</span>
+            </span>
+          </a>
+        );
+      })}
     </div>
   </div>
 </section>

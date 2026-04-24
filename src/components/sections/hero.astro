@@ -1,4 +1,5 @@
 ---
+import { ArrowRight, ExternalLink, Sparkles } from "@lucide/astro";
 ---
 
 <section
@@ -16,13 +17,19 @@
       </p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <a
-          class="inline-flex min-h-12 items-center justify-center rounded-full bg-text-strong px-5 py-[0.8rem] font-bold tracking-[-0.005em] text-text-on-strong transition duration-200 hover:-translate-y-px hover:bg-text-strong-hover hover:no-underline"
+          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-text-strong px-5 py-[0.8rem] font-bold tracking-[-0.005em] text-text-on-strong transition duration-200 hover:-translate-y-px hover:bg-text-strong-hover hover:no-underline"
           href="#contact"
-        >启动合作</a>
+        >
+          启动合作
+          <ArrowRight aria-hidden="true" class="h-4 w-4" stroke-width={2.25} />
+        </a>
         <a
-          class="inline-flex min-h-12 items-center justify-center rounded-full border border-border bg-surface/76 px-5 py-[0.8rem] font-bold tracking-[-0.005em] text-text-strong transition duration-200 hover:-translate-y-px hover:border-border-hover hover:bg-surface hover:no-underline"
+          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-surface/76 px-5 py-[0.8rem] font-bold tracking-[-0.005em] text-text-strong transition duration-200 hover:-translate-y-px hover:border-border-hover hover:bg-surface hover:no-underline"
           href="#projects"
-        >查看公开项目</a>
+        >
+          查看公开项目
+          <ExternalLink aria-hidden="true" class="h-4 w-4 text-accent-strong" stroke-width={2.25} />
+        </a>
       </div>
       <dl class="mt-10 grid max-w-[35rem] grid-cols-3 gap-4 border-t border-border pt-6">
         <div class="flex flex-col gap-1">
@@ -45,7 +52,10 @@
     >
       <div class="relative z-[1] flex items-center justify-between gap-4">
         <img src="/logo.svg" alt="EvoniaAI logo" class="h-20 w-20 rounded-3xl bg-white shadow-sm" />
-        <span class="rounded-full bg-accent-soft px-3 py-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-accent-strong">AI First</span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-accent-strong">
+          <Sparkles aria-hidden="true" class="h-3.5 w-3.5" stroke-width={2.25} />
+          AI First
+        </span>
       </div>
       <p class="relative z-[1] mt-8 text-[0.8125rem] font-bold uppercase tracking-[0.08em] text-accent-strong">Trust · Global · Dignity</p>
       <h2 class="relative z-[1] mt-3 text-[1.375rem] font-bold leading-[1.25] text-text-strong md:text-[1.625rem]">
