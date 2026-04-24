@@ -15,6 +15,11 @@
   --accent-soft: #e8f1ff;
   --gradient-brand: linear-gradient(135deg, #8ec4ff 0%, #73b5fa 52%, #5aa4f5 100%);
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 200ms;
+  --ring: 0 0 0 3px color-mix(in srgb, var(--accent) 38%, transparent);
+  --shadow-card: 0 18px 50px -20px rgb(7 17 31 / 0.18);
+  --shadow-card-hover: 0 28px 60px -24px rgb(7 17 31 / 0.22);
   color-scheme: light dark;
 }
 
@@ -27,11 +32,13 @@
     --text: #d9e4f2;
     --text-strong: #f8fbff;
     --text-muted: #a7b5c8;
-    --text-soft: #6f7f93;
+    --text-soft: #7d8da3;
     --border: rgb(205 224 255 / 0.14);
     --accent: #6aa8ff;
     --accent-strong: #8ec4ff;
     --accent-soft: rgb(62 132 246 / 0.16);
+    --shadow-card: 0 18px 50px -24px rgb(0 0 0 / 0.55);
+    --shadow-card-hover: 0 26px 62px -26px rgb(0 0 0 / 0.65);
   }
 }
 
@@ -48,6 +55,10 @@ body {
   color: var(--text);
   background: var(--bg);
   letter-spacing: 0;
+  font-feature-settings: "ss01", "cv11", "tnum";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -59,6 +70,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  transition: color var(--dur) var(--ease);
 }
 
 a:hover {
@@ -89,6 +101,34 @@ h6 {
   background: var(--accent);
 }
 
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: 0.5rem;
+}
+
+summary {
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body::-webkit-scrollbar {
   width: 0.4rem;
 }
@@ -105,6 +145,7 @@ body::-webkit-scrollbar-thumb {
 .hero-section {
   position: relative;
   overflow: hidden;
+  padding: clamp(5rem, 9vw, 7rem) 1rem;
 }
 
 .hero-section::before {
@@ -128,15 +169,16 @@ body::-webkit-scrollbar-thumb {
 .service-row,
 .project-card,
 .founder-band,
-.contact-card {
+.contact-card,
+.value-card {
   border: 1px solid var(--border);
   background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
-  box-shadow: 0 24px 70px rgb(7 17 31 / 0.08);
+  box-shadow: var(--shadow-card);
 }
 
 .hero-panel {
   border-radius: 1.5rem;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 76%, transparent), transparent),
     color-mix(in srgb, var(--surface-strong) 92%, transparent);
@@ -146,7 +188,7 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 5rem 1rem 0;
+  padding: clamp(4rem, 8vw, 6rem) 1rem;
 }
 
 .section-heading {
@@ -157,28 +199,32 @@ body::-webkit-scrollbar-thumb {
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--accent-strong);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .section-title {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   max-width: 48rem;
   color: var(--text-strong);
-  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-size: clamp(2.125rem, 4.8vw, 3.5rem);
   font-weight: 700;
   line-height: 1.12;
+  letter-spacing: -0.01em;
 }
 
 .section-copy {
+  margin-top: 1.25rem;
   max-width: 42rem;
   color: var(--text-muted);
   font-size: 1.05rem;
-  line-height: 1.8;
+  line-height: 1.75;
 }
 
 .quiet-card {
   min-height: 16rem;
   border-radius: 1.25rem;
-  padding: 1.5rem;
+  padding: 1.75rem;
 }
 
 .service-row {
@@ -186,25 +232,27 @@ body::-webkit-scrollbar-thumb {
   gap: 1.5rem;
   align-items: start;
   border-radius: 1.25rem;
-  padding: 1.5rem;
+  padding: 1.75rem;
 }
 
 .project-card {
   display: flex;
-  min-height: 24rem;
   flex-direction: column;
+  gap: 1.25rem;
   border-radius: 1.25rem;
-  padding: 1.5rem;
+  padding: 1.75rem;
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease;
+    transform var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 }
 
 .project-card:hover {
   transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
   background: color-mix(in srgb, var(--surface-strong) 96%, var(--accent-soft));
+  box-shadow: var(--shadow-card-hover);
 }
 
 .project-logo-wrap {
@@ -229,7 +277,7 @@ body::-webkit-scrollbar-thumb {
   gap: 2rem;
   align-items: center;
   border-radius: 1.5rem;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.75rem, 4vw, 3rem);
   background:
     linear-gradient(100deg, color-mix(in srgb, var(--accent-soft) 80%, transparent), transparent),
     var(--surface-strong);
@@ -237,7 +285,7 @@ body::-webkit-scrollbar-thumb {
 
 .contact-card {
   border-radius: 1.5rem;
-  padding: clamp(1.5rem, 5vw, 3.5rem);
+  padding: clamp(1.75rem, 5vw, 3.5rem);
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent 58%),
     var(--surface-strong);
@@ -252,10 +300,13 @@ body::-webkit-scrollbar-thumb {
   border-radius: 999px;
   padding: 0.8rem 1.25rem;
   font-weight: 700;
+  letter-spacing: -0.005em;
+  font-feature-settings: "cv11";
   transition:
-    transform 180ms ease,
-    opacity 180ms ease,
-    border-color 180ms ease;
+    transform var(--dur) var(--ease),
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
 }
 
 .button-primary {
@@ -269,10 +320,21 @@ body::-webkit-scrollbar-thumb {
   color: var(--text-strong);
 }
 
-.button-primary:hover,
+.button-primary:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--text-strong) 88%, var(--accent));
+}
+
 .button-secondary:hover {
   transform: translateY(-1px);
-  opacity: 0.88;
+  background: var(--surface);
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--border));
+}
+
+.button-primary:focus-visible,
+.button-secondary:focus-visible {
+  box-shadow: var(--ring);
+  border-radius: 999px;
 }
 
 @media (min-width: 768px) {
@@ -325,15 +387,16 @@ body::-webkit-scrollbar-thumb {
   background: var(--accent-soft);
   padding: 0.375rem 0.75rem;
   border-radius: 999px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .hero-marks {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  margin: 3rem 0 0;
-  padding-top: 1.25rem;
+  gap: 1rem;
+  margin: 2.5rem 0 0;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--border);
   max-width: 35rem;
 }
@@ -350,6 +413,7 @@ body::-webkit-scrollbar-thumb {
   color: var(--accent-strong);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
 }
 
 .hero-marks dd {
@@ -357,27 +421,27 @@ body::-webkit-scrollbar-thumb {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-strong);
+  font-variant-numeric: tabular-nums;
 }
 
 .value-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
-  min-height: 18rem;
-  border: 1px solid var(--border);
+  gap: 0.75rem;
+  min-height: 16rem;
   border-radius: 1.25rem;
-  padding: 1.75rem 1.5rem;
-  background: color-mix(in srgb, var(--surface-strong) 90%, transparent);
-  box-shadow: 0 24px 70px rgb(7 17 31 / 0.08);
+  padding: 1.75rem;
   transition:
-    transform 180ms ease,
-    border-color 180ms ease;
+    transform var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 }
 
 .value-card:hover {
   transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+  box-shadow: var(--shadow-card-hover);
 }
 
 .value-num {
@@ -388,12 +452,14 @@ body::-webkit-scrollbar-thumb {
   font-size: 0.75rem;
   color: var(--text-soft);
   letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
 }
 
 .value-title {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-strong);
+  letter-spacing: -0.005em;
 }
 
 .value-en {
@@ -418,10 +484,26 @@ body::-webkit-scrollbar-thumb {
 
 .project-cta {
   margin-top: auto;
-  padding-top: 1.5rem;
+  padding-top: 0.5rem;
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--text-strong);
+  display: inline-flex;
+  align-items: center;
+}
+
+.project-cta::after {
+  content: "";
+  display: inline-block;
+  width: 0.375rem;
+  height: 1px;
+  margin-left: 0.5rem;
+  background: currentColor;
+  transition: width var(--dur) var(--ease);
+}
+
+.project-card:hover .project-cta::after {
+  width: 1.25rem;
 }
 
 .contact-card {
@@ -438,27 +520,29 @@ body::-webkit-scrollbar-thumb {
 
 .contact-channels {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .channel-card {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
-  padding: 1.25rem 1.375rem;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
   border: 1px solid var(--border);
   border-radius: 1rem;
   background: color-mix(in srgb, var(--surface-strong) 94%, transparent);
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease;
+    transform var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 }
 
 .channel-card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--accent) 46%, var(--border));
   background: color-mix(in srgb, var(--surface-strong) 100%, var(--accent-soft));
+  box-shadow: var(--shadow-card);
 }
 
 .channel-top {
@@ -479,8 +563,8 @@ body::-webkit-scrollbar-thumb {
   font-size: 1rem;
   color: var(--text-soft);
   transition:
-    transform 180ms ease,
-    color 180ms ease;
+    transform var(--dur) var(--ease),
+    color var(--dur) var(--ease);
 }
 
 .channel-card:hover .channel-arrow {
@@ -490,7 +574,7 @@ body::-webkit-scrollbar-thumb {
 
 .channel-value {
   font-family: var(--font-mono);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-strong);
   word-break: break-all;
