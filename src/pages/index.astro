@@ -5,10 +5,67 @@ import Hero from "../components/sections/hero.astro";
 import Values from "../components/sections/values.astro";
 import Projects from "../components/sections/projects.astro";
 import Contact from "../components/sections/contact.astro";
-import { contactEmail } from "../constants";
+import { contactEmail, projects } from "../constants";
 
 const description =
   "EvoniaAI 是一家 AI First 公司，帮助全球客户构建世界级 AI Agents 与 AI Platforms，让团队在 AI 时代获得更强生产力与能力。";
+
+const siteUrl = (Astro.site ?? new URL("https://evoniaai.github.io")).toString().replace(/\/$/, "");
+const orgId = `${siteUrl}/#organization`;
+const websiteId = `${siteUrl}/#website`;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": orgId,
+      name: "EvoniaAI",
+      alternateName: "灵栈平云",
+      description,
+      url: `${siteUrl}/`,
+      slogan: "AI First Company",
+      foundingDate: "2026",
+      email: contactEmail,
+      knowsAbout: ["AI Agents", "AI Platforms", "Productivity"],
+      sameAs: [
+        "https://github.com/EvoniaAI",
+        "https://annatarhe.com",
+      ],
+      founder: {
+        "@type": "Person",
+        name: "AnnatarHe",
+        url: "https://annatarhe.com",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: contactEmail,
+        contactType: "customer support",
+        areaServed: "Worldwide",
+        availableLanguage: ["zh-Hans", "en"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      name: "EvoniaAI",
+      url: `${siteUrl}/`,
+      inLanguage: "zh-Hans",
+      publisher: { "@id": orgId },
+    },
+    {
+      "@type": "ItemList",
+      name: "EvoniaAI Projects",
+      itemListElement: projects.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: project.url,
+        name: project.title,
+        description: project.summary,
+      })),
+    },
+  ],
+};
 ---
 
 <Layout title="EvoniaAI · AI First Company" description={description}>
@@ -17,26 +74,12 @@ const description =
     title="EvoniaAI · AI First Company"
     description={description}
     urlPath="/"
-    image="/logo.svg"
   >
     <script
       slot="jsonld"
       type="application/ld+json"
       is:inline
-      set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "EvoniaAI",
-        alternateName: "灵栈平云",
-        description,
-        url: Astro.site,
-        founder: {
-          "@type": "Person",
-          name: "AnnatarHe",
-          url: "https://annatarhe.com",
-        },
-        email: contactEmail,
-      })}
+      set:html={JSON.stringify(structuredData)}
     />
   </SEOTags>
 

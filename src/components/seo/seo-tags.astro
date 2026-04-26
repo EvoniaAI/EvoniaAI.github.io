@@ -3,27 +3,32 @@ interface Props {
   title: string;
   description: string;
   urlPath?: string;
-  image?: string;
 }
 
 const {
   title,
   description,
-  urlPath = "/",
-  image = "/social-share.png"
+  urlPath = "/"
 } = Astro.props;
 
-const absoluteUrl = new URL(urlPath, Astro.site ?? "https://evoniaai.github.io").toString();
+const siteUrl = Astro.site ?? new URL("https://evoniaai.github.io");
+const absoluteUrl = new URL(urlPath, siteUrl).toString();
 ---
 
 <Fragment>
+  <link rel="canonical" href={absoluteUrl} />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={absoluteUrl} />
-  <meta property="og:image" content={image} />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:site_name" content="EvoniaAI" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@AnnatarHe" />
+  <meta name="twitter:creator" content="@AnnatarHe" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={image} />
+  <slot name="jsonld" />
 </Fragment>
