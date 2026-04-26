@@ -1,47 +1,37 @@
 ---
+import { FolderGit2 } from "@lucide/astro";
 import { projects } from "../../constants";
 ---
 
-<section id="projects" class="mx-auto w-full max-w-6xl px-4 py-[clamp(4rem,8vw,6rem)]">
-  <div class="max-w-[44rem]">
-    <p class="text-[0.8rem] font-bold uppercase tracking-[0.08em] text-accent-strong">Public Projects</p>
-    <h2 class="mt-3 max-w-[48rem] text-[clamp(2.125rem,4.8vw,3.5rem)] font-bold leading-[1.12] tracking-[-0.01em] text-text-strong">
-      我们做过的事，是最清晰的自我介绍。
+<section id="projects" class="mx-auto w-full max-w-2xl px-4 py-20">
+  <div class="text-center">
+    <h2 class="flex items-center justify-center gap-2 text-sm uppercase tracking-wider text-text-soft">
+      <FolderGit2 aria-hidden="true" class="h-4 w-4" stroke-width={1.75} />
+      <span>Public Projects</span>
     </h2>
-    <p class="mt-5 max-w-[42rem] text-[1.05rem] leading-[1.75] text-text-muted">
-      三个公开项目分别面向开发者、技术内容创作者和摄影师，覆盖工具、内容和平台三种形态，也展示了 EvoniaAI 对 AI 时代软件的判断。
+    <h3 class="mt-4 text-2xl font-light text-text-strong md:text-3xl">
+      我们做过的事，是最清晰的自我介绍。
+    </h3>
+    <p class="mx-auto mt-4 max-w-md leading-relaxed text-text-muted">
+      面向开发者、技术内容创作者和摄影师的公开项目，覆盖工具、内容和平台三种形态。
     </p>
   </div>
 
-  <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+  <div class="mt-12 grid gap-8 md:grid-cols-2">
     {projects.map((project) => (
       <a
-        class="group flex flex-col gap-5 rounded-card border border-border bg-surface-strong/88 p-7 shadow-card transition duration-200 hover:-translate-y-[3px] hover:border-border-hover hover:bg-surface-hover hover:shadow-card-hover hover:no-underline"
         href={project.url}
         target="_blank"
         rel="noreferrer"
+        class="group block space-y-2 hover:no-underline"
       >
-        <div class="flex items-center gap-4">
-          <span class="inline-flex h-14 w-14 flex-none items-center justify-center overflow-hidden rounded-2xl border border-border bg-surface-strong">
-            {project.darkLogo ? (
-              <>
-                <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10 rounded-xl dark:hidden" />
-                <img src={project.darkLogo} alt={`${project.title} logo`} class="hidden h-10 w-10 rounded-xl dark:block" />
-              </>
-            ) : (
-              <img src={project.logo} alt={`${project.title} logo`} class="h-10 w-10 rounded-xl" />
-            )}
-          </span>
-          <div>
-            <h3 class="text-[1.125rem] font-bold text-text-strong md:text-[1.25rem]">{project.title}</h3>
-            <p class="mt-0.5 text-[0.8125rem] text-accent-strong">{project.tagline}</p>
-          </div>
+        <div class="flex items-baseline justify-between gap-3">
+          <h4 class="text-lg text-text-strong transition-colors group-hover:text-accent">
+            {project.title}
+          </h4>
+          <span class="shrink-0 text-xs text-text-soft">{project.tagline}</span>
         </div>
-        <p class="leading-[1.75] text-text-muted">{project.summary}</p>
-        <span class="mt-auto inline-flex items-center pt-2 text-sm font-bold text-text-strong">
-          访问项目
-          <span aria-hidden="true" class="ml-2 inline-block h-px w-1.5 bg-current transition-[width] duration-200 group-hover:w-5"></span>
-        </span>
+        <p class="text-sm leading-relaxed text-text-muted">{project.summary}</p>
       </a>
     ))}
   </div>

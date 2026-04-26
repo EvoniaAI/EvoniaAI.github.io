@@ -3,9 +3,9 @@ import Header from "./header.astro";
 import Footer from "./footer.astro";
 ---
 
-<div class="min-h-screen bg-bg text-text">
+<div class="flex min-h-screen flex-col bg-bg text-text">
   <Header />
-  <main>
+  <main class="flex-1 pt-20">
     <slot />
   </main>
   <Footer />

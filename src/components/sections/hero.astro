@@ -1,69 +1,63 @@
 ---
-import { ArrowRight, ExternalLink, Sparkles } from "@lucide/astro";
+import { ArrowRight, GitFork, Globe, Mail } from "@lucide/astro";
+import { contactEmail } from "../../constants";
 ---
 
 <section
   id="top"
-  class="relative overflow-hidden px-4 py-[clamp(5rem,9vw,7rem)] before:pointer-events-none before:absolute before:inset-0 before:z-0 before:content-[''] before:bg-hero-halo"
+  class="mx-auto flex min-h-[calc(100vh-5rem)] max-w-2xl flex-col items-center justify-center gap-8 px-4 py-20 text-center"
 >
-  <div class="relative z-[1] mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-14">
-    <div>
-      <p class="text-[0.8rem] font-bold uppercase tracking-[0.08em] text-accent-strong">AI First Company · 灵栈平云</p>
-      <h1 class="mt-5 max-w-4xl text-[2.5rem] font-bold leading-[1.08] tracking-[-0.02em] text-text-strong md:text-[4.25rem] md:leading-[1.05]">
-        信任优先，<br />构建 AI 时代的<br />真实能力。
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-[1.75] text-text-muted md:text-xl">
-        EvoniaAI 帮助全球客户构建世界级 AI Agents 与 AI Platforms，把先进技术落到可运行、可信任、可持续演进的业务系统里。
-      </p>
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <a
-          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-text-strong px-5 py-[0.8rem] font-bold tracking-[-0.005em] text-text-on-strong transition duration-200 hover:-translate-y-px hover:bg-text-strong-hover hover:no-underline"
-          href="#contact"
-        >
-          启动合作
-          <ArrowRight aria-hidden="true" class="h-4 w-4" stroke-width={2.25} />
-        </a>
-        <a
-          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-surface/76 px-5 py-[0.8rem] font-bold tracking-[-0.005em] text-text-strong transition duration-200 hover:-translate-y-px hover:border-border-hover hover:bg-surface hover:no-underline"
-          href="#projects"
-        >
-          查看公开项目
-          <ExternalLink aria-hidden="true" class="h-4 w-4 text-accent-strong" stroke-width={2.25} />
-        </a>
-      </div>
-      <dl class="mt-10 grid max-w-[35rem] grid-cols-3 gap-4 border-t border-border pt-6">
-        <div class="flex flex-col gap-1">
-          <dt class="text-[0.6875rem] font-bold uppercase tracking-[0.08em] tabular-nums text-accent-strong">Trust</dt>
-          <dd class="text-sm font-semibold tabular-nums text-text-strong">信任优先</dd>
-        </div>
-        <div class="flex flex-col gap-1">
-          <dt class="text-[0.6875rem] font-bold uppercase tracking-[0.08em] tabular-nums text-accent-strong">Global</dt>
-          <dd class="text-sm font-semibold tabular-nums text-text-strong">全球视野</dd>
-        </div>
-        <div class="flex flex-col gap-1">
-          <dt class="text-[0.6875rem] font-bold uppercase tracking-[0.08em] tabular-nums text-accent-strong">Dignity</dt>
-          <dd class="text-sm font-semibold tabular-nums text-text-strong">技术与尊严</dd>
-        </div>
-      </dl>
-    </div>
+  <img
+    src="/logo.svg"
+    alt="EvoniaAI logo"
+    class="h-24 w-24 rounded-2xl border-2 border-accent bg-white"
+  />
 
-    <div
-      class="relative overflow-hidden rounded-panel border border-border p-[clamp(1.75rem,4vw,2.5rem)] shadow-card bg-hero-panel after:pointer-events-none after:absolute after:-right-20 after:-top-20 after:h-[260px] after:w-[260px] after:rounded-full after:opacity-35 after:blur-[60px] after:content-[''] after:bg-hero-glow"
+  <div class="space-y-3">
+    <h1 class="text-3xl font-light text-text-strong md:text-4xl">
+      EvoniaAI · 灵栈平云
+    </h1>
+    <p class="text-lg text-text-muted">
+      AI First Company · Trust · Global · Dignity
+    </p>
+  </div>
+
+  <p class="max-w-md leading-relaxed text-text-muted">
+    EvoniaAI 帮助全球客户构建世界级 AI Agents 与 AI Platforms，把先进技术落到可运行、可信任、可持续演进的业务系统里。
+  </p>
+
+  <div class="flex flex-wrap justify-center gap-6 text-sm">
+    <a
+      href={`mailto:${contactEmail}`}
+      class="flex items-center gap-1.5 text-text-muted transition-colors hover:text-accent"
     >
-      <div class="relative z-[1] flex items-center justify-between gap-4">
-        <img src="/logo.svg" alt="EvoniaAI logo" class="h-20 w-20 rounded-3xl bg-white shadow-sm" />
-        <span class="inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-accent-strong">
-          <Sparkles aria-hidden="true" class="h-3.5 w-3.5" stroke-width={2.25} />
-          AI First
-        </span>
-      </div>
-      <p class="relative z-[1] mt-8 text-[0.8125rem] font-bold uppercase tracking-[0.08em] text-accent-strong">Trust · Global · Dignity</p>
-      <h2 class="relative z-[1] mt-3 text-[1.375rem] font-bold leading-[1.25] text-text-strong md:text-[1.625rem]">
-        我们相信技术与尊严可以让世界更好。
-      </h2>
-      <p class="relative z-[1] mt-3 max-w-md leading-[1.75] text-text-muted">
-        AI 不应该只带来更快的自动化，也应该带来更清晰的责任、更好的协作，以及更值得信任的产品体验。
-      </p>
-    </div>
+      <Mail aria-hidden="true" class="h-4 w-4" stroke-width={1.75} />
+      <span>Email</span>
+    </a>
+    <a
+      href="https://github.com/EvoniaAI"
+      target="_blank"
+      rel="noreferrer"
+      class="flex items-center gap-1.5 text-text-muted transition-colors hover:text-accent"
+    >
+      <GitFork aria-hidden="true" class="h-4 w-4" stroke-width={1.75} />
+      <span>GitHub</span>
+    </a>
+    <a
+      href="https://annatarhe.com"
+      target="_blank"
+      rel="noreferrer"
+      class="flex items-center gap-1.5 text-text-muted transition-colors hover:text-accent"
+    >
+      <Globe aria-hidden="true" class="h-4 w-4" stroke-width={1.75} />
+      <span>Founder</span>
+    </a>
+    <a
+      href="#projects"
+      class="flex items-center gap-1.5 text-text-muted transition-colors hover:text-accent"
+    >
+      <span>查看公开项目</span>
+      <ArrowRight aria-hidden="true" class="h-4 w-4" stroke-width={1.75} />
+    </a>
   </div>
 </section>
