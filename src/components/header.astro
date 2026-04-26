@@ -2,6 +2,7 @@
 const currentPath = Astro.url.pathname;
 const prefix = currentPath === "/" ? "" : "/";
 const navLinks = [
+  { href: `${prefix}#services`, label: "服务" },
   { href: `${prefix}#values`, label: "价值观" },
   { href: `${prefix}#projects`, label: "项目" },
   { href: `${prefix}#contact`, label: "联系" },

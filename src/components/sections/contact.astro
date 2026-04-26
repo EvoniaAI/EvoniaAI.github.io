@@ -21,7 +21,7 @@ const iconFor: Record<string, typeof Mail> = {
     写下你的目标、现有系统和想解决的问题。我们会从信任、交付和长期能力建设的角度开始。
   </p>
 
-  <div class="mt-10 flex flex-wrap justify-center gap-6 text-sm">
+  <div class="mx-auto mt-10 grid max-w-xl gap-3 sm:grid-cols-3">
     {contactChannels.map((c) => {
       const Icon = iconFor[c.label] ?? Mail;
       return (
@@ -29,10 +29,13 @@ const iconFor: Record<string, typeof Mail> = {
           href={c.href}
           target={c.href.startsWith("http") ? "_blank" : undefined}
           rel="noreferrer"
-          class="flex items-center gap-1.5 text-text-muted transition-colors hover:text-accent"
+          class="group flex flex-col items-center gap-1 rounded-2xl border border-border bg-surface p-4 text-sm transition hover:border-accent hover:no-underline"
         >
-          <Icon aria-hidden="true" class="h-4 w-4" stroke-width={1.75} />
-          <span>{c.label}</span>
+          <span class="flex items-center gap-1.5 text-text-strong transition-colors group-hover:text-accent">
+            <Icon aria-hidden="true" class="h-4 w-4" stroke-width={1.75} />
+            <span>{c.label}</span>
+          </span>
+          <span class="truncate text-xs text-text-muted">{c.value}</span>
         </a>
       );
     })}

@@ -2,10 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import SEOTags from "../components/seo/seo-tags.astro";
 import Hero from "../components/sections/hero.astro";
+import Services from "../components/sections/services.astro";
 import Values from "../components/sections/values.astro";
 import Projects from "../components/sections/projects.astro";
 import Contact from "../components/sections/contact.astro";
-import { contactEmail, projects } from "../constants";
+import { contactEmail, projects, services } from "../constants";
 
 const description =
   "EvoniaAI 是一家 AI First 公司，帮助全球客户构建世界级 AI Agents 与 AI Platforms，让团队在 AI 时代获得更强生产力与能力。";
@@ -55,6 +56,21 @@ const structuredData = {
     },
     {
       "@type": "ItemList",
+      name: "EvoniaAI Services",
+      itemListElement: services.map((service, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Service",
+          name: service.title,
+          alternateName: service.tagline,
+          description: service.description,
+          provider: { "@id": orgId },
+        },
+      })),
+    },
+    {
+      "@type": "ItemList",
       name: "EvoniaAI Projects",
       itemListElement: projects.map((project, index) => ({
         "@type": "ListItem",
@@ -84,6 +100,7 @@ const structuredData = {
   </SEOTags>
 
   <Hero />
+  <Services />
   <Values />
   <Projects />
   <Contact />
