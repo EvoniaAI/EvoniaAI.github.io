@@ -1,10 +1,10 @@
 ---
-import { FolderGit2 } from "@lucide/astro";
+import { ArrowUpRight, FolderGit2 } from "@lucide/astro";
 import { projects } from "../../constants";
 ---
 
-<section id="projects" class="mx-auto w-full max-w-2xl px-4 py-20">
-  <div class="text-center">
+<section id="projects" class="mx-auto w-full max-w-5xl px-4 py-20">
+  <div class="text-center flex flex-col items-center">
     <h2 class="flex items-center justify-center gap-2 text-sm uppercase tracking-wider text-text-soft">
       <FolderGit2 aria-hidden="true" class="h-4 w-4" stroke-width={1.75} />
       <span>Public Projects</span>
@@ -17,21 +17,36 @@ import { projects } from "../../constants";
     </p>
   </div>
 
-  <div class="mt-12 grid gap-8 md:grid-cols-2">
+  <div class="mt-12 grid gap-6 md:grid-cols-2">
     {projects.map((project) => (
       <a
         href={project.url}
         target="_blank"
         rel="noreferrer"
-        class="group block space-y-2 hover:no-underline"
+        class="group flex h-full flex-col rounded-2xl border border-border bg-surface p-6 transition hover:border-accent hover:no-underline"
       >
-        <div class="flex items-baseline justify-between gap-3">
-          <h4 class="text-lg text-text-strong transition-colors group-hover:text-accent">
-            {project.title}
-          </h4>
-          <span class="shrink-0 text-xs text-text-soft">{project.tagline}</span>
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-border bg-white">
+            {project.darkLogo ? (
+              <picture>
+                <source srcset={project.darkLogo} media="(prefers-color-scheme: dark)" />
+                <img src={project.logo} alt={`${project.title} logo`} class="h-8 w-8 object-contain" />
+              </picture>
+            ) : (
+              <img src={project.logo} alt={`${project.title} logo`} class="h-8 w-8 object-contain" />
+            )}
+          </div>
+          <ArrowUpRight
+            aria-hidden="true"
+            class="h-5 w-5 shrink-0 text-text-soft transition-colors group-hover:text-accent"
+            stroke-width={1.75}
+          />
         </div>
-        <p class="text-sm leading-relaxed text-text-muted">{project.summary}</p>
+        <h4 class="mt-5 text-lg text-text-strong transition-colors group-hover:text-accent">
+          {project.title}
+        </h4>
+        <p class="mt-1 text-xs uppercase tracking-wider text-accent">{project.tagline}</p>
+        <p class="mt-3 text-sm leading-relaxed text-text-muted">{project.summary}</p>
       </a>
     ))}
   </div>

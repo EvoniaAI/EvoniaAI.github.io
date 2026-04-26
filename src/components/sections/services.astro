@@ -1,0 +1,41 @@
+---
+import { Bot, Layers, Sparkles, Zap } from "@lucide/astro";
+import { services } from "../../constants";
+
+const iconFor: Record<string, typeof Bot> = {
+  "AI Agent 构建": Bot,
+  "AI Platform 设计": Layers,
+  "AI 时代生产力升级": Zap,
+};
+---
+
+<section id="services" class="mx-auto w-full max-w-5xl px-4 py-20 flex flex-col items-center">
+  <div class="text-center flex flex-col items-center">
+    <h2 class="flex items-center justify-center gap-2 text-sm uppercase tracking-wider text-text-soft">
+      <Sparkles aria-hidden="true" class="h-4 w-4" stroke-width={1.75} />
+      <span>What we do</span>
+    </h2>
+    <h3 class="mt-4 text-2xl font-light text-text-strong md:text-3xl">
+      把 AI 落到可运行、可信任、可演进的业务系统。
+    </h3>
+    <p class="mx-auto mt-4 max-w-md leading-relaxed text-text-muted">
+      围绕 Agent 构建、Platform 设计与生产力升级，三条主线覆盖团队从立项到长期运营的关键环节。
+    </p>
+  </div>
+
+  <div class="mt-12 grid gap-6 md:grid-cols-3">
+    {services.map((service) => {
+      const Icon = iconFor[service.title] ?? Sparkles;
+      return (
+        <article class="rounded-2xl border border-border bg-surface p-6">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-soft text-accent">
+            <Icon aria-hidden="true" class="h-5 w-5" stroke-width={1.75} />
+          </div>
+          <p class="mt-5 text-xs uppercase tracking-wider text-accent">{service.tagline}</p>
+          <h4 class="mt-2 text-lg font-light text-text-strong">{service.title}</h4>
+          <p class="mt-3 text-sm leading-relaxed text-text-muted">{service.description}</p>
+        </article>
+      );
+    })}
+  </div>
+</section>
