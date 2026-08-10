@@ -15,7 +15,7 @@ pnpm build          # runs `astro check` (typecheck) then `astro build`
 pnpm preview        # serve the built site from dist/
 ```
 
-Node.js v25 (see `.node-version`). There is no test runner, lint command, or formatter configured.
+Node.js v26 (see `.node-version`). There is no test runner, lint command, or formatter configured.
 
 ## Architecture
 
